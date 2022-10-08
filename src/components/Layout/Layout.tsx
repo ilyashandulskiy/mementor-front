@@ -10,9 +10,13 @@ interface Props {
 const Layout = ({ children }: Props) => {
   return (
     <>
-      <img src={backgroundImage} className={styles.background} />
+      <img
+        alt="background"
+        src={backgroundImage}
+        className={styles.background}
+      />
       <div className={styles.container}>
-        <img className={styles.logo} src={logoImage} />
+        <img alt="logo" className={styles.logo} src={logoImage} />
         {children}
       </div>
     </>

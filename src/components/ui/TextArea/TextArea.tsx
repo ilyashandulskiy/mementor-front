@@ -1,19 +1,23 @@
-import React, { forwardRef, Ref } from 'react';
+import React, { forwardRef, HTMLAttributes, Ref } from 'react';
 import styles from './TextArea.module.css';
 import cn from 'classnames';
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   placeholder?: string;
-  error?: string;
+  error?: boolean;
 }
 
 const TextArea = forwardRef(
-  ({ label, placeholder, error }: Props, ref: Ref<HTMLTextAreaElement>) => {
+  (
+    { label, placeholder, error, ...props }: Props,
+    ref: Ref<HTMLTextAreaElement>
+  ) => {
     return (
       <div className={styles.container}>
         {label && <p className={styles.label}>{label}</p>}
         <textarea
+          {...props}
           id="new-password"
           autoComplete="new-password"
           ref={ref}
@@ -24,7 +28,7 @@ const TextArea = forwardRef(
             { [styles.inputError]: error },
           ])}
         />
-        {error && <p className={styles.error}>{error}</p>}
+        {error && <p className={styles.error}>Поле заполнено не верно</p>}
       </div>
     );
   }
