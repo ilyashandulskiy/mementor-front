@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import styles from './EditProfile.module.css';
 import ProfileForm from './components/ProfileForm/ProfileForm';
 import { Profile } from 'types';
+import useApi from 'hooks/useApi';
+import useNavigation from 'hooks/useNavigation';
 
 const demoData: Profile = {
   name: 'name',
   surname: 'surname',
+  technology: ['github', 'pornhub'],
   email: 'name@mail.ru',
   experienceSince: 2022,
   programmingLanguage: ['js', 'ts'],
@@ -15,10 +18,14 @@ const demoData: Profile = {
 
 const EditProfile = () => {
   const [saving, setSaving] = useState(false);
+  const api = useApi();
+  const navigation = useNavigation();
 
-  const onSave = (val: Profile) => {
+  const onSave = async (val: Profile) => {
     setSaving(true);
-    console.log({ ...demoData, ...val });
+    await api.saveProfile({ ...demoData, ...val });
+    setSaving(false);
+    navigation.goToProfile();
   };
 
   return (

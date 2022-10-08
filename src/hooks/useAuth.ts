@@ -3,7 +3,7 @@ import useApi from './useApi';
 
 const singInConfig = {
   expiresIn: 100000,
-  tokenType: 'JWT',
+  tokenType: 'Bearer',
 };
 
 const useAuth = () => {

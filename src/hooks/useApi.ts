@@ -12,9 +12,10 @@ const useApi = () => {
       return await fetch.post<string>('sign-up', { email, password });
     },
     async getProfile() {
-      return await fetch.get<Profile>(
-        'https://interquiz.herokuapp.com/questions/top'
-      );
+      return await fetch.get<Profile>('mentor');
+    },
+    async saveProfile(data: Profile) {
+      return await fetch.put<string>('mentor', data);
     },
   };
 };

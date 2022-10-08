@@ -4,7 +4,7 @@ export interface Profile {
   email: string;
   experienceSince: number;
   programmingLanguage: string[];
-  technology?: string[];
+  technology: string[];
   grade: 'junior' | 'middle' | 'senior';
   description?: string;
   education?: { place: string; department: string }[];
