@@ -1,4 +1,4 @@
-import { useSignIn } from 'react-auth-kit';
+import { useSignIn, useSignOut } from 'react-auth-kit';
 
 const singInConfig = {
   token: 'token',
@@ -8,10 +8,12 @@ const singInConfig = {
 
 const useAuth = () => {
   const singIn = useSignIn();
+  const singOut = useSignOut();
 
   return {
     login: (email: string, password: string) =>
       singIn({ ...singInConfig, authState: { email, password } }),
+    logout: () => singOut(),
     register: (email: string, password: string) =>
       singIn({ ...singInConfig, authState: { email, password } }),
   };

@@ -38,12 +38,14 @@ const RegisterForm = ({ onSubmit, isLoading }: Props) => {
           error={!!errors?.password}
         />
       </div>
-      <Button loading={isLoading} submit type="primary">
-        Создать аккаунт
-      </Button>
-      <Button onClick={navigation.goToLogin} outline type="primary">
-        Войти в существующий
-      </Button>
+      <div className={styles.buttons}>
+        <Button loading={isLoading} submit type="primary">
+          Создать аккаунт
+        </Button>
+        <Button onClick={navigation.goToLogin} outline type="primary">
+          Войти в существующий
+        </Button>
+      </div>
     </Form>
   );
 };

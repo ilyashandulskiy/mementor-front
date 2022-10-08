@@ -22,3 +22,11 @@
     gap: 20px;
     justify-content: stretch;
 }
+
+.buttons {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: stretch;
+    margin-top: 20px;
+}

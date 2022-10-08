@@ -24,3 +24,11 @@
     gap: 20px;
     flex: 1;
 }
+
+.buttons {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: stretch;
+    margin-top: 20px;
+}

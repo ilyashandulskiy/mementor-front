@@ -1,4 +1,5 @@
 import useFetch from './useFetch';
+import { Profile } from 'types';
 
 const useApi = () => {
   const fetch = useFetch();
@@ -6,6 +7,11 @@ const useApi = () => {
   return {
     async getAll() {
       return await fetch.get('https://interquiz.herokuapp.com/questions/top');
+    },
+    async getProfile() {
+      return await fetch.get<Profile>(
+        'https://interquiz.herokuapp.com/questions/top'
+      );
     },
   };
 };
