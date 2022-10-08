@@ -15,7 +15,7 @@ root.render(
   <React.StrictMode>
     <Toaster position="top-right" />
     <AuthProvider authType="localstorage" authName="_mementor">
-      <BrowserRouter>
+      <BrowserRouter basename="/mementor/">
         <App />
       </BrowserRouter>
     </AuthProvider>
