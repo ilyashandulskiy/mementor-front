@@ -18,7 +18,7 @@
     "@typescript-eslint/no-empty-function": ["error", { "allow": ["arrowFunctions"] }],
 
     "react/prop-types": "off",
-    "no-console": "error",
+    "no-console": "warn",
 
     "react/display-name": "off",
     "@typescript-eslint/no-explicit-any": "off",

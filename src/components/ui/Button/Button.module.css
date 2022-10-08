@@ -2,3 +2,8 @@
     min-height: 45px;
     max-height: 45px;
 }
+
+.buttonOutline, .buttonOutline:hover {
+    background: transparent;
+    color: #81BC55;
+}

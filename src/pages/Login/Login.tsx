@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './Login.module.css';
-import { useNavigate } from 'react-router';
-import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
-import Select from '../../components/ui/Select';
+import Button from '../../components/ui/Button';
+import { useNavigate } from 'react-router';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,16 +10,13 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <h2>ВХОД В АККАУНТ</h2>
-      <Input error="Error field" label="Email" placeholder="Email" />
-      <Input label="Email" placeholder="Email" />
-      <Select label="Super select">
-        <option value="4">Four</option>
-      </Select>
-      <Button onClick={() => navigate('../register')} type="primary">
-        Войти
-      </Button>
-      <Button disabled onClick={() => navigate('../register')} type="primary">
-        Выйти
+      <div className={styles.fields}>
+        <Input label="Email" placeholder="yourmail@mail.com" />
+        <Input label="Пароль" password />
+      </div>
+      <Button type="primary">Войти в аккаунт</Button>
+      <Button onClick={() => navigate('../register')} outline type="primary">
+        Создать новый
       </Button>
     </div>
   );

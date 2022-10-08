@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './Register.module.css';
+import Input from '../../components/ui/Input';
+import Button from '../../components/ui/Button';
 import { useNavigate } from 'react-router';
 
 const Register = () => {
@@ -7,12 +9,17 @@ const Register = () => {
 
   return (
     <div className={styles.container}>
-      <h2>РЕГИСТРАЦИЯ</h2>
-      <input className="form-control" />
-      <input className="form-control" />
-      <button onClick={() => navigate('../login')} className="btn btn-primary">
-        Войти
-      </button>
+      <h2>СОЗДАНИЕ АККАУНТА</h2>
+      <div className={styles.fields}>
+        <Input label="Email" placeholder="yourmail@mail.com" />
+        <Input label="Пароль" password />
+      </div>
+      <Button onClick={() => navigate('../create')} type="primary">
+        Создать аккаунт
+      </Button>
+      <Button onClick={() => navigate('../login')} outline type="primary">
+        Войти в существующий
+      </Button>
     </div>
   );
 };

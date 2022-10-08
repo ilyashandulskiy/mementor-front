@@ -27,8 +27,9 @@ const Button = ({
       disabled={disabled}
       onClick={onClick}
       className={cn([
-        `btn btn${outline ? '-outline' : ''}-${type}`,
+        `btn btn-${type}`,
         styles.button,
+        { [styles.buttonOutline]: outline },
         className,
       ])}
     >

@@ -1,26 +1,21 @@
 import React, { forwardRef, Ref } from 'react';
-import styles from './Input.module.css';
+import styles from './TextArea.module.css';
 import cn from 'classnames';
 
 interface Props {
   label?: string;
   placeholder?: string;
   error?: string;
-  password?: boolean;
 }
 
-const Input = forwardRef(
-  (
-    { label, placeholder, error, password }: Props,
-    ref: Ref<HTMLInputElement>
-  ) => {
+const TextArea = forwardRef(
+  ({ label, placeholder, error }: Props, ref: Ref<HTMLTextAreaElement>) => {
     return (
       <div className={styles.container}>
         {label && <p className={styles.label}>{label}</p>}
-        <input
+        <textarea
           id="new-password"
           autoComplete="new-password"
-          type={password ? 'password' : 'text'}
           ref={ref}
           placeholder={placeholder}
           className={cn([
@@ -35,4 +30,4 @@ const Input = forwardRef(
   }
 );
 
-export default Input;
+export default TextArea;

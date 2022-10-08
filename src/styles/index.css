@@ -33,4 +33,13 @@ textarea:focus, input:focus, select:focus, input[type]:focus, .uneditable-input:
 h1, h2 {
   color: #81BC55 !important;
   font-family: 'Rubik', sans-serif;
+  text-align: center;
+}
+
+h3, h4, h5, h6 {
+  text-align: center;
+}
+
+.modal-content {
+  border: none !important;
 }

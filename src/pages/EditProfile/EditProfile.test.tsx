@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import Login from './Login';
+import EditProfile from './EditProfile';
 
 describe('Login screen', () => {
   test('title must be correct', () => {
-    render(<Login />);
+    render(<EditProfile />);
     expect(screen.getByText(/Вход в аккаунт/)).toBeInTheDocument();
   });
 });

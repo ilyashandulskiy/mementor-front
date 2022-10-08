@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import Register from './Register';
 
-describe('Test login screen', () => {
-  test('must display text', () => {
+describe('Register screen', () => {
+  test('Title must be correct', () => {
     render(<Register />);
-    expect(screen.getByText(/screen/)).toBeInTheDocument();
+    expect(screen.getByText(/Создание аккаунта/)).toBeInTheDocument();
   });
 });

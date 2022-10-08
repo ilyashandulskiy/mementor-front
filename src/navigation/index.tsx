@@ -4,6 +4,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import { AnimatePresence } from 'framer-motion';
 import ContentBlock from '../components/ContentBlock';
+import EditProfile from '../pages/EditProfile';
 
 const Navigation = () => {
   return (
@@ -24,6 +25,14 @@ const Navigation = () => {
             </ContentBlock>
           }
           path="/register"
+        />
+        <Route
+          element={
+            <ContentBlock key="createProfile">
+              <EditProfile />
+            </ContentBlock>
+          }
+          path="/create"
         />
       </Routes>
     </AnimatePresence>
