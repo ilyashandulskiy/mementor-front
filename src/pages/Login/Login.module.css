@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: stretch;
-    padding: 30px;
+    padding: 50px 30px 30px;
 }
 
 .form {

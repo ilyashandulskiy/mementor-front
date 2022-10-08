@@ -5,14 +5,17 @@ import './styles/calendar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from 'react-auth-kit';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <AuthProvider authType="localstorage" authName="_mementor">
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>
 );

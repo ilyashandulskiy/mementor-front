@@ -1,39 +1,25 @@
 import React from 'react';
 import { Route, Routes } from 'react-router';
-import Login from '../pages/Login';
-import Register from '../pages/Register';
 import { AnimatePresence } from 'framer-motion';
 import ContentBlock from '../components/ContentBlock';
-import EditProfile from '../pages/EditProfile';
+import useRoutes from '../hooks/useRoutes';
+import { useIsAuthenticated } from 'react-auth-kit';
 
 const Navigation = () => {
+  const auth = useIsAuthenticated();
+  const routes = useRoutes(auth());
+
   return (
     <AnimatePresence>
       <Routes>
-        <Route
-          element={
-            <ContentBlock key="login">
-              <Login />
-            </ContentBlock>
-          }
-          path="/login"
-        />
-        <Route
-          element={
-            <ContentBlock key="register">
-              <Register />
-            </ContentBlock>
-          }
-          path="/register"
-        />
-        <Route
-          element={
-            <ContentBlock key="createProfile">
-              <EditProfile />
-            </ContentBlock>
-          }
-          path="/create"
-        />
+        {routes.map((route) => (
+          <Route
+            path={route.path}
+            element={
+              <ContentBlock key={route.path}>{route.element}</ContentBlock>
+            }
+          />
+        ))}
       </Routes>
     </AnimatePresence>
   );
