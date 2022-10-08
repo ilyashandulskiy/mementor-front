@@ -1,19 +1,25 @@
 import axios from 'axios';
 import { useSignOut } from 'react-auth-kit';
+import { toast } from 'react-hot-toast';
 
-const baseUrl = '';
+const baseUrl: string = process.env.REACT_APP_BASE_URL || '';
 
 interface AxiosError {
   response: {
     status: number;
   };
+  message: string;
 }
 
 const useFetch = () => {
   const signOut = useSignOut();
 
-  const handleError = ({ response: { status } }: AxiosError) => {
-    if (status === 401) signOut();
+  const handleError = ({ response: { status }, message }: AxiosError) => {
+    if (status === 401) {
+      signOut();
+    } else {
+      toast.error(`Ошибка сервера: ${message}`);
+    }
   };
 
   return {

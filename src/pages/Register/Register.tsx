@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Register.module.css';
 import RegisterForm from './components/RegisterForm';
 import useNavigation from 'hooks/useNavigation';
+import useAuth from 'hooks/useAuth';
 
 interface Response {
   email: string;
@@ -10,9 +11,10 @@ interface Response {
 
 const Register = () => {
   const navigation = useNavigation();
+  const { register } = useAuth();
 
   const onRegister = ({ email, password }: Response) => {
-    console.log({ email, password });
+    register(email, password);
     navigation.goToEditProfile();
   };
 

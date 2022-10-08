@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
 import LoginForm from './components/LoginForm';
-import useApi from 'hooks/useApi';
+import useAuth from 'hooks/useAuth';
 
 interface Response {
   email: string;
@@ -10,18 +10,11 @@ interface Response {
 
 const Login = () => {
   const [isLoading, setLoading] = useState(false);
-  // const singIn = useSignIn();
-  const api = useApi();
+  const { login } = useAuth();
+
   const onLogin = ({ email, password }: Response) => {
-    console.log({ email, password });
     setLoading(true);
-    api.getAll();
-    // singIn({
-    //   token: 'token',
-    //   expiresIn: 100000,
-    //   tokenType: 'JWT',
-    //   authState: { email },
-    // });
+    login(email, password);
   };
 
   return (
