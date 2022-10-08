@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './Date.module.css';
 import cn from 'classnames';
-import Modal from '../../Modal';
-import DatePicker from '../../DatePicker';
+import Modal from 'components/Modal';
+import DatePicker from 'components/DatePicker';
 import { unixToDate } from './helpers';
 
 interface Props {

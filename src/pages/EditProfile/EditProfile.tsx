@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styles from './EditProfile.module.css';
-import Input from '../../components/ui/Input';
-import Button from '../../components/ui/Button';
-import Select from '../../components/ui/Select';
-import TextArea from '../../components/ui/TextArea';
+import Input from 'components/ui/Input';
+import Button from 'components/ui/Button';
+import Select from 'components/ui/Select';
+import TextArea from 'components/ui/TextArea';
 import { yearOptions } from './helpers';
 import useNavigation from 'hooks/useNavigation';
 

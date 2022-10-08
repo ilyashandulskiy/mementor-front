@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Register.module.css';
 import RegisterForm from './components/RegisterForm';
-import useNavigation from '../../hooks/useNavigation';
+import useNavigation from 'hooks/useNavigation';
 
 interface Response {
   email: string;

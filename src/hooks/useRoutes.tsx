@@ -1,7 +1,7 @@
-import Login from '../pages/Login';
-import Register from '../pages/Register';
-import EditProfile from '../pages/EditProfile';
-import Profile from '../pages/Profile';
+import Login from 'pages/Login';
+import Register from 'pages/Register';
+import EditProfile from 'pages/EditProfile';
+import Profile from 'pages/Profile';
 import { ReactNode } from 'react';
 
 type Routes = {

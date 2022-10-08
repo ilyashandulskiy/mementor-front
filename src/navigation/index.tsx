@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router';
 import { AnimatePresence } from 'framer-motion';
-import ContentBlock from '../components/ContentBlock';
-import useRoutes from '../hooks/useRoutes';
+import ContentBlock from 'components/ContentBlock';
+import useRoutes from 'hooks/useRoutes';
 import { useIsAuthenticated } from 'react-auth-kit';
 
 const Navigation = () => {

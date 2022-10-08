@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import cn from 'classnames';
 import styles from './Button.module.css';
-import Spinner from '../Spinner';
+import Spinner from 'components/ui/Spinner';
 
 interface Props {
   children: ReactNode | ReactNode[];

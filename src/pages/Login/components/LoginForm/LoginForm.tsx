@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from '../../Login.module.css';
-import Input from '../../../../components/ui/Input';
-import Button from '../../../../components/ui/Button';
-import Form from '../../../../components/ui/Form/Form';
+import Input from 'components/ui/Input';
+import Button from 'components/ui/Button';
+import Form from 'components/ui/Form/Form';
 import { useForm } from 'react-hook-form';
-import patterns from '../../../../helpers/patterns';
-import useNavigation from '../../../../hooks/useNavigation';
+import patterns from 'helpers/patterns';
+import useNavigation from 'hooks/useNavigation';
 
 interface Props {
   onSubmit: any;

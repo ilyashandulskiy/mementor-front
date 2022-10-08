@@ -7,7 +7,8 @@
     "plugin:prettier/recommended"
   ],
   "plugins": [
-    "prettier"
+    "prettier",
+    "eslint-plugin-absolute-imports-only"
   ],
   "ignorePatterns": [
   ],
@@ -16,6 +17,8 @@
     "prettier/prettier": "error",
     "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }],
     "@typescript-eslint/no-empty-function": ["error", { "allow": ["arrowFunctions"] }],
+
+    "absolute-imports-only/only-absolute-imports": "error",
 
     "react/prop-types": "off",
     "no-console": "warn",
