@@ -1,0 +1,28 @@
+.input {
+    margin-top: 0
+}
+
+.inputError {
+    border: 1px solid red;
+}
+
+.label {
+    margin: 2px;
+    opacity: 0.5;
+}
+
+.error {
+    font-size: 12px;
+    margin: 2px;
+    opacity: 0.8;
+    color: red;
+}
+
+.container {
+    width: 100%;
+}
+
+.container h5 {
+    text-align: start;
+    margin-left: 3px;
+}
