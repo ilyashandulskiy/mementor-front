@@ -11,6 +11,7 @@ interface Props {
   className?: string;
   disabled?: boolean;
   loading?: boolean;
+  submit?: boolean;
 }
 
 const Button = ({
@@ -21,9 +22,11 @@ const Button = ({
   className,
   disabled,
   loading,
+  submit,
 }: Props) => {
   return (
     <button
+      type={submit ? 'submit' : 'button'}
       disabled={disabled}
       onClick={onClick}
       className={cn([

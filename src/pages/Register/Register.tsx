@@ -1,25 +1,25 @@
 import React from 'react';
 import styles from './Register.module.css';
-import Input from '../../components/ui/Input';
-import Button from '../../components/ui/Button';
+import RegisterForm from './components/RegisterForm';
 import { useNavigate } from 'react-router';
+
+interface Response {
+  email: string;
+  password: string;
+}
 
 const Register = () => {
   const navigate = useNavigate();
 
+  const onRegister = ({ email, password }: Response) => {
+    console.log({ email, password });
+    navigate('../create');
+  };
+
   return (
     <div className={styles.container}>
       <h2>СОЗДАНИЕ АККАУНТА</h2>
-      <div className={styles.fields}>
-        <Input label="Email" placeholder="yourmail@mail.com" />
-        <Input label="Пароль" password />
-      </div>
-      <Button onClick={() => navigate('../create')} type="primary">
-        Создать аккаунт
-      </Button>
-      <Button onClick={() => navigate('../login')} outline type="primary">
-        Войти в существующий
-      </Button>
+      <RegisterForm isLoading={false} onSubmit={onRegister} />
     </div>
   );
 };

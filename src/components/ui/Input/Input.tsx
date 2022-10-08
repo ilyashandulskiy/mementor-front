@@ -1,23 +1,24 @@
-import React, { forwardRef, Ref } from 'react';
+import React, { forwardRef, HTMLAttributes, Ref } from 'react';
 import styles from './Input.module.css';
 import cn from 'classnames';
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLInputElement> {
   label?: string;
   placeholder?: string;
-  error?: string;
+  error?: boolean;
   password?: boolean;
 }
 
 const Input = forwardRef(
   (
-    { label, placeholder, error, password }: Props,
+    { label, placeholder, error, password, ...props }: Props,
     ref: Ref<HTMLInputElement>
   ) => {
     return (
       <div className={styles.container}>
         {label && <p className={styles.label}>{label}</p>}
         <input
+          {...props}
           id="new-password"
           autoComplete="new-password"
           type={password ? 'password' : 'text'}
@@ -29,7 +30,7 @@ const Input = forwardRef(
             { [styles.inputError]: error },
           ])}
         />
-        {error && <p className={styles.error}>{error}</p>}
+        {error && <p className={styles.error}>Поле заполнено не верно</p>}
       </div>
     );
   }
