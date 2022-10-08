@@ -15,11 +15,10 @@ const useFetch = () => {
   const signOut = useSignOut();
 
   const handleError = ({ response: { status }, message }: AxiosError) => {
-    if (status === 401) {
-      signOut();
-    } else {
-      toast.error(`Ошибка сервера: ${message}`);
-    }
+    if (status === 401) return signOut();
+    if (status === 412) return toast.error('Такой пользователь не найден');
+
+    toast.error(`Ошибка сервера: ${message}`);
   };
 
   return {
@@ -33,7 +32,7 @@ const useFetch = () => {
     },
     async post<T>(url: string, body: any) {
       try {
-        const { data } = await axios.get<T>(baseUrl + url, body);
+        const { data } = await axios.post<T>(baseUrl + url, body);
         return data;
       } catch (err) {
         handleError(err as AxiosError);
@@ -41,7 +40,7 @@ const useFetch = () => {
     },
     async put<T>(url: string, body: any) {
       try {
-        const { data } = await axios.get<T>(baseUrl + url, body);
+        const { data } = await axios.put<T>(baseUrl + url, body);
         return data;
       } catch (err) {
         handleError(err as AxiosError);

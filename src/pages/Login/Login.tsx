@@ -12,9 +12,10 @@ const Login = () => {
   const [isLoading, setLoading] = useState(false);
   const { login } = useAuth();
 
-  const onLogin = ({ email, password }: Response) => {
+  const onLogin = async ({ email, password }: Response) => {
     setLoading(true);
-    login(email, password);
+    await login(email, password);
+    setLoading(false);
   };
 
   return (

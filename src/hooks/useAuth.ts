@@ -1,7 +1,7 @@
 import { useSignIn, useSignOut } from 'react-auth-kit';
+import useApi from './useApi';
 
 const singInConfig = {
-  token: 'token',
   expiresIn: 100000,
   tokenType: 'JWT',
 };
@@ -9,13 +9,20 @@ const singInConfig = {
 const useAuth = () => {
   const singIn = useSignIn();
   const singOut = useSignOut();
+  const api = useApi();
 
   return {
-    login: (email: string, password: string) =>
-      singIn({ ...singInConfig, authState: { email, password } }),
+    login: async (email: string, password: string) => {
+      const token = await api.login(email, password);
+      if (token) singIn({ ...singInConfig, token, authState: { email } });
+      return !!token;
+    },
     logout: () => singOut(),
-    register: (email: string, password: string) =>
-      singIn({ ...singInConfig, authState: { email, password } }),
+    register: async (email: string, password: string) => {
+      const token = await api.register(email, password);
+      if (token) singIn({ ...singInConfig, token, authState: { email } });
+      return !!token;
+    },
   };
 };
 
