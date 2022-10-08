@@ -26,7 +26,7 @@ const unAuthRoutes = [
 
 const authRoutes = [
   {
-    path: '/create',
+    path: '/edit',
     element: <EditProfile />,
   },
   {

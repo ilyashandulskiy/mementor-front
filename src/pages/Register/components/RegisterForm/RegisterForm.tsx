@@ -2,10 +2,10 @@ import React from 'react';
 import styles from '../../Register.module.css';
 import Input from '../../../../components/ui/Input';
 import Button from '../../../../components/ui/Button';
-import { useNavigate } from 'react-router';
 import Form from '../../../../components/ui/Form/Form';
 import { useForm } from 'react-hook-form';
 import patterns from '../../../../helpers/patterns';
+import useNavigation from '../../../../hooks/useNavigation';
 
 interface Props {
   onSubmit: any;
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const RegisterForm = ({ onSubmit, isLoading }: Props) => {
-  const navigate = useNavigate();
+  const navigation = useNavigation();
   const {
     handleSubmit,
     register,
@@ -41,7 +41,7 @@ const RegisterForm = ({ onSubmit, isLoading }: Props) => {
       <Button loading={isLoading} submit type="primary">
         Создать аккаунт
       </Button>
-      <Button onClick={() => navigate('../login')} outline type="primary">
+      <Button onClick={navigation.goToLogin} outline type="primary">
         Войти в существующий
       </Button>
     </Form>

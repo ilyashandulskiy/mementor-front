@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Register.module.css';
 import RegisterForm from './components/RegisterForm';
-import { useNavigate } from 'react-router';
+import useNavigation from '../../hooks/useNavigation';
 
 interface Response {
   email: string;
@@ -9,11 +9,11 @@ interface Response {
 }
 
 const Register = () => {
-  const navigate = useNavigate();
+  const navigation = useNavigation();
 
   const onRegister = ({ email, password }: Response) => {
     console.log({ email, password });
-    navigate('../create');
+    navigation.goToEditProfile();
   };
 
   return (
