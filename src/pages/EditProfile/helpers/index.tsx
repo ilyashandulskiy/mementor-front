@@ -6,5 +6,9 @@ export const yearOptions = () => {
   for (let i = 0; i < 30; i++) {
     years.push(currentYear - i);
   }
-  return years.map((year) => <option value={year}>{year}</option>);
+  return years.map((year) => (
+    <option key={year} value={year}>
+      {year}
+    </option>
+  ));
 };

@@ -22,9 +22,9 @@ const EditProfile = () => {
         <div className={styles.row}>
           <Select label="Опыт работы с">{yearOptions()}</Select>
           <Select label="Грейд">
-            <option>Junior</option>
-            <option>Middle</option>
-            <option>Senior</option>
+            <option value="junior">Junior</option>
+            <option value="middle">Middle</option>
+            <option value="senior">Senior</option>
           </Select>
         </div>
         <TextArea label="Описание" />
