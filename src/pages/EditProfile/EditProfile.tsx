@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styles from './EditProfile.module.css';
 import ProfileForm from './components/ProfileForm/ProfileForm';
 import { Profile } from 'types';
-import useApi from 'hooks/useApi';
 import useNavigation from 'hooks/useNavigation';
+import { useProfile } from 'hooks/useProfile';
 
 const demoData: Profile = {
   name: 'name',
@@ -18,12 +18,13 @@ const demoData: Profile = {
 
 const EditProfile = () => {
   const [saving, setSaving] = useState(false);
-  const api = useApi();
+  const { save } = useProfile();
   const navigation = useNavigation();
 
   const onSave = async (val: Profile) => {
     setSaving(true);
-    await api.saveProfile({ ...demoData, ...val });
+    const newData = { ...demoData, ...val };
+    await save(newData);
     setSaving(false);
     navigation.goToProfile();
   };

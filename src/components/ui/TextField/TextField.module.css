@@ -26,3 +26,21 @@
     text-align: start;
     margin-left: 3px;
 }
+
+.skeletonLabel {
+    width: 100px;
+    height: 15px;
+    background-color: gray;
+    opacity: 0.1;
+    border-radius: 5px;
+    margin: 10px 0px;
+}
+
+.skeletonText {
+    width: 150px;
+    height: 25px;
+    background-color: gray;
+    opacity: 0.3;
+    border-radius: 5px;
+    margin: 5px 0px;
+}

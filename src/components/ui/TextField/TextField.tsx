@@ -3,10 +3,18 @@ import styles from './TextField.module.css';
 
 interface Props {
   label?: string;
-  text: string;
+  text: string | undefined;
 }
 
 const TextField = ({ label, text }: Props) => {
+  if (text === undefined)
+    return (
+      <div className={styles.container}>
+        {label && <div className={styles.skeletonLabel} />}
+        <div className={styles.skeletonText} />
+      </div>
+    );
+
   return (
     <div className={styles.container}>
       {label && <p className={styles.label}>{label}</p>}
