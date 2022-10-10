@@ -18,7 +18,7 @@ const demoData: Profile = {
 
 const EditProfile = () => {
   const [saving, setSaving] = useState(false);
-  const { save } = useProfile();
+  const { save, data } = useProfile();
   const navigation = useNavigation();
 
   const onSave = async (val: Profile) => {
@@ -29,10 +29,13 @@ const EditProfile = () => {
     navigation.goToProfile();
   };
 
+  if (!data) return null;
+
   return (
     <div className={styles.container}>
       <h2>НАСТРОЙКА ПРОФИЛЯ</h2>
       <ProfileForm
+        defaultValues={data}
         loading={saving}
         onChange={(val) => onSave(val as Profile)}
       />

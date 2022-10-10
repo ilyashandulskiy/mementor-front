@@ -19,7 +19,7 @@ root.render(
     <Toaster position="top-right" />
     <AuthProvider authType="localstorage" authName="_mementor">
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter basename="/mementor/">
+        <BrowserRouter basename="/test-drive/mementor/">
           <App />
         </BrowserRouter>
       </QueryClientProvider>

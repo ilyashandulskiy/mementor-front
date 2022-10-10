@@ -9,19 +9,21 @@ import Form from 'components/ui/Form/Form';
 import useNavigation from 'hooks/useNavigation';
 import { useForm } from 'react-hook-form';
 import patterns from 'helpers/patterns';
+import { Profile } from 'types';
 
 interface Props {
   loading: boolean;
   onChange: (val: unknown) => void;
+  defaultValues: Profile;
 }
 
-const ProfileForm = ({ loading, onChange }: Props) => {
+const ProfileForm = ({ loading, onChange, defaultValues }: Props) => {
   const navigation = useNavigation();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: 'onBlur' });
+  } = useForm({ mode: 'onBlur', defaultValues });
 
   return (
     <Form onSubmit={handleSubmit(onChange)}>
