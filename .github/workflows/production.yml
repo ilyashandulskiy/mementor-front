@@ -36,4 +36,4 @@ jobs:
         # Local directory
         localDir: ./build
         # Remote directory
-        remoteDir: ./www/interquiz.ru/mementor
+        remoteDir: ./www/ilyaprojects.com/test-drive/mementor
