@@ -5,14 +5,9 @@ import { Profile } from 'types';
 import useNavigation from 'hooks/useNavigation';
 import { useProfile } from 'hooks/useProfile';
 
-const demoData: Profile = {
-  name: 'name',
-  surname: 'surname',
+const demoData = {
   technology: ['github', 'pornhub'],
-  email: 'name@mail.ru',
-  experienceSince: 2022,
   programmingLanguage: ['js', 'ts'],
-  grade: 'junior',
   tariff: [{ price: 1000, name: 'час' }],
 };
 
@@ -23,7 +18,7 @@ const EditProfile = () => {
 
   const onSave = async (val: Profile) => {
     setSaving(true);
-    const newData = { ...demoData, ...val };
+    const newData = { ...val, ...demoData };
     await save(newData);
     setSaving(false);
     navigation.goToProfile();
@@ -35,7 +30,7 @@ const EditProfile = () => {
     <div className={styles.container}>
       <h2>НАСТРОЙКА ПРОФИЛЯ</h2>
       <ProfileForm
-        defaultValues={data}
+        defaultValues={data.grade ? data : ({} as Profile)}
         loading={saving}
         onChange={(val) => onSave(val as Profile)}
       />
