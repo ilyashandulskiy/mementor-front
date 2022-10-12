@@ -44,3 +44,20 @@
     border-radius: 5px;
     margin: 5px 0px;
 }
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 0;
+    padding: 6px;
+    min-height: 10px !important;
+}
+
+.tag {
+    background-color: #81BC55;
+    border-radius: 5px;
+    color: white;
+    padding: 4px 8px;
+}

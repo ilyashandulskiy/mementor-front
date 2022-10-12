@@ -30,6 +30,11 @@ const Profile = () => {
           <TextField text={data?.grade} label="Грейд" />
         </div>
         <TextField label="Email" text={data?.email} />
+        <div className={styles.row}>
+          <TextField label="Разговариваю на языках:" tags={data?.language} />
+          <TextField label="Готов обучить:" tags={data?.programmingLanguage} />
+        </div>
+        <TextField label="Знаком с технологиями:" tags={data?.technology} />
         <TextField label="Описание" text={data?.description} />
       </div>
       <Button onClick={navigation.goToEditProfile} outline type="primary">
