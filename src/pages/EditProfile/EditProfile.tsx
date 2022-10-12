@@ -6,8 +6,6 @@ import useNavigation from 'hooks/useNavigation';
 import { useProfile } from 'hooks/useProfile';
 
 const demoData = {
-  technology: ['github', 'pornhub'],
-  programmingLanguage: ['js', 'ts'],
   tariff: [{ price: 1000, name: 'час' }],
 };
 

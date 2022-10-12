@@ -1,0 +1,44 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 0;
+    padding: 6px;
+    min-height: 10px !important;
+}
+
+.tag {
+    background-color: #81BC55;
+    border-radius: 5px;
+    color: white;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.input {
+    flex: 1;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.inputError {
+    border: 1px solid red;
+}
+
+.label {
+    margin: 2px;
+    opacity: 0.5;
+}
+
+.error {
+    font-size: 12px;
+    margin: 2px;
+    opacity: 0.8;
+    color: red;
+}
+
+.container {
+    width: 100%;
+}

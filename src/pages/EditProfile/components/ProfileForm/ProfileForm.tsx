@@ -10,6 +10,7 @@ import useNavigation from 'hooks/useNavigation';
 import { useForm } from 'react-hook-form';
 import patterns from 'helpers/patterns';
 import { Profile } from 'types';
+import ControlledTags from 'components/form-ui/ControlledTags';
 
 interface Props {
   loading: boolean;
@@ -22,6 +23,7 @@ const ProfileForm = ({ loading, onChange, defaultValues }: Props) => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm({ mode: 'onBlur', defaultValues });
 
@@ -62,12 +64,38 @@ const ProfileForm = ({ loading, onChange, defaultValues }: Props) => {
           label="Email"
           placeholder="yourmail@mail.com"
         />
+
+        <ControlledTags
+          control={control}
+          rules={{ required: true }}
+          label="На каких языках вы разговариваете?"
+          placeholder="Введите через пробел"
+          name="language"
+        />
+
+        <ControlledTags
+          control={control}
+          rules={{ required: true }}
+          label="Каким языкам программирования вы обучаете?"
+          placeholder="Введите через пробел"
+          name="programmingLanguage"
+        />
+
+        <ControlledTags
+          control={control}
+          rules={{ required: true }}
+          label="Какие технологии вы используете в работе?"
+          placeholder="Введите через пробел"
+          name="technology"
+        />
+
         <TextArea
           label="Описание"
           {...register('description', { required: false })}
           error={!!errors?.description}
         />
       </div>
+
       <div className={styles.buttons}>
         <Button loading={loading} submit type="primary">
           Сохранить настройки профиля
