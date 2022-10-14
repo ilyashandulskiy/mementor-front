@@ -21,7 +21,7 @@ const ProfileInformation = ({ data }: Props) => {
         <div className={styles.row}>
           <TextField
             label="Опыт работы с"
-            text={data?.experienceSince.toString()}
+            text={data?.experienceSince?.toString()}
           />
           <TextField text={data?.grade} label="Грейд" />
         </div>
