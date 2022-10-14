@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './EditProfile.module.css';
-import ProfileForm from './components/ProfileForm/ProfileForm';
+import ProfileForm from './components/ProfileForm';
 import { Profile } from 'types';
 import useNavigation from 'hooks/useNavigation';
 import { useProfile } from 'hooks/useProfile';
@@ -28,7 +28,7 @@ const EditProfile = () => {
     <div className={styles.container}>
       <h2>НАСТРОЙКА ПРОФИЛЯ</h2>
       <ProfileForm
-        defaultValues={data.grade ? data : ({} as Profile)}
+        defaultValues={data.grade ? data : ({ email: data.email } as Profile)}
         loading={saving}
         onChange={(val) => onSave(val as Profile)}
       />

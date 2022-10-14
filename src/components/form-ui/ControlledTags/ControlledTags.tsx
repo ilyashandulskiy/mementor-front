@@ -9,6 +9,7 @@ interface Props {
   placeholder?: string;
   label?: string;
   name: any;
+  separator?: string;
 }
 
 const ControlledTags = ({
@@ -17,6 +18,7 @@ const ControlledTags = ({
   rules,
   placeholder,
   label,
+  separator,
 }: Props) => {
   return (
     <Controller
@@ -28,6 +30,7 @@ const ControlledTags = ({
         fieldState: { error },
       }) => (
         <Tags
+          separator={separator}
           placeholder={placeholder}
           label={label}
           error={!!error}

@@ -89,6 +89,15 @@ const ProfileForm = ({ loading, onChange, defaultValues }: Props) => {
           name="technology"
         />
 
+        <ControlledTags
+          control={control}
+          separator=","
+          rules={{ required: true }}
+          label="Готов помочь с"
+          placeholder="Вводите каждый пункт с новой строки"
+          name="canHelpWith"
+        />
+
         <TextArea
           label="Описание"
           {...register('description', { required: false })}

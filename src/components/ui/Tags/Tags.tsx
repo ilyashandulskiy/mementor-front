@@ -9,15 +9,25 @@ interface Props {
   setTags: (tags: string[]) => void;
   onBlur?: () => void;
   placeholder?: string;
+  separator?: string;
 }
 
-const Tags = ({ label, error, tags, setTags, onBlur, placeholder }: Props) => {
+const Tags = ({
+  label,
+  error,
+  tags,
+  setTags,
+  onBlur,
+  placeholder,
+  separator,
+}: Props) => {
   const [text, setText] = useState<string>('');
 
   useEffect(() => {
-    if (text[text.length - 1] === ' ') {
-      if (text.trim().length > 0) {
-        setTags([...tags, text]);
+    if (text.includes(separator || ' ')) {
+      const clearText = text.replaceAll(separator || ' ', '');
+      if (clearText.length > 0) {
+        setTags([...tags, clearText]);
         setText('');
       }
     }
