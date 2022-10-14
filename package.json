@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -22,6 +24,7 @@
     "classnames": "^2.3.2",
     "eslint-plugin-absolute-imports-only": "^1.0.1",
     "framer-motion": "^7.5.3",
+    "husky": "^8.0.1",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-auth-kit": "^2.4.0",
