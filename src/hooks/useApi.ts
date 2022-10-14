@@ -14,6 +14,9 @@ const useApi = () => {
     async getProfile() {
       return await fetch.get<Profile>('mentor');
     },
+    async getMentor(id: string) {
+      return await fetch.get<Profile>('mentor/' + id);
+    },
     async saveProfile(data: Profile) {
       return await fetch.put<string>('mentor', data);
     },

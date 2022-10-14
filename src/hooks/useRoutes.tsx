@@ -3,6 +3,7 @@ import Register from 'pages/Register';
 import EditProfile from 'pages/EditProfile';
 import Profile from 'pages/Profile';
 import { ReactNode } from 'react';
+import Mentor from 'pages/Mentor';
 
 type Routes = {
   path: string;
@@ -39,6 +40,14 @@ const authRoutes = [
   },
 ];
 
-const useRoutes = (auth: boolean): Routes => (auth ? authRoutes : unAuthRoutes);
+const commonRoutes = [
+  {
+    path: '/mentor/:id',
+    element: <Mentor />,
+  },
+];
+
+const useRoutes = (auth: boolean): Routes =>
+  auth ? [...authRoutes, ...commonRoutes] : [...unAuthRoutes, ...commonRoutes];
 
 export default useRoutes;

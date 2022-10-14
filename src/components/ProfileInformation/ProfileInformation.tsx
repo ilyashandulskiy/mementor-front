@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../../EditProfile/EditProfile.module.css';
+import styles from './ProfileInformation.module.css';
 import TextField from 'components/ui/TextField';
 import { Profile } from 'types';
 
