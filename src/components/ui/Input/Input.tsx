@@ -7,11 +7,12 @@ interface Props extends HTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   error?: boolean;
   password?: boolean;
+  errorText?: string;
 }
 
 const Input = forwardRef(
   (
-    { label, placeholder, error, password, ...props }: Props,
+    { label, placeholder, error, errorText, password, ...props }: Props,
     ref: Ref<HTMLInputElement>
   ) => {
     return (
@@ -30,7 +31,11 @@ const Input = forwardRef(
             { [styles.inputError]: error },
           ])}
         />
-        {error && <p className={styles.error}>Поле заполнено не верно</p>}
+        {error && (
+          <p className={styles.error}>
+            {errorText || 'Поле заполнено не верно'}
+          </p>
+        )}
       </div>
     );
   }

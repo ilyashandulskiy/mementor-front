@@ -32,10 +32,11 @@ const LoginForm = ({ onSubmit, isLoading }: Props) => {
           error={!!errors?.email}
         />
         <Input
-          {...register('password', { required: true })}
+          {...register('password', { required: true, minLength: 6 })}
           label="Пароль"
           password
           error={!!errors?.password}
+          errorText="Длина пароля должна быть минимум 6 символов"
         />
       </div>
       <div className={styles.buttons}>
