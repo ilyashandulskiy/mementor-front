@@ -11,4 +11,5 @@ export interface Profile {
   tariff?: { price: number; name: string }[];
   canHelpWith?: string[];
   language?: string[];
+  validProfile?: boolean;
 }

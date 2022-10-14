@@ -1,45 +1,25 @@
 import React from 'react';
 import styles from '../EditProfile/EditProfile.module.css';
-import TextField from 'components/ui/TextField';
+import { useProfile } from 'hooks/useProfile';
+import ProfileInformation from './components/ProfileInformation';
 import Button from 'components/ui/Button';
 import useNavigation from 'hooks/useNavigation';
 import useAuth from 'hooks/useAuth';
-import Spinner from 'components/ui/Spinner';
-import { useProfile } from 'hooks/useProfile';
 
 const Profile = () => {
+  const { data } = useProfile();
   const navigation = useNavigation();
   const auth = useAuth();
-  const { data } = useProfile();
 
   return (
     <div className={styles.container}>
-      <h2>
-        Профиль {data?.name} {data?.surname}
-      </h2>
-      <div className={styles.fields}>
-        <div className={styles.row}>
-          <TextField label="Имя" text={data?.name} />
-          <TextField label="Фамилия" text={data?.surname} />
-        </div>
-        <div className={styles.row}>
-          <TextField
-            label="Опыт работы с"
-            text={data?.experienceSince.toString()}
-          />
-          <TextField text={data?.grade} label="Грейд" />
-        </div>
-        <TextField label="Email" text={data?.email} />
-        <div className={styles.row}>
-          <TextField label="Разговариваю на языках:" tags={data?.language} />
-          <TextField label="Готов обучить:" tags={data?.programmingLanguage} />
-        </div>
-        <div className={styles.row}>
-          <TextField label="Знаком с технологиями:" tags={data?.technology} />
-        </div>
-        <TextField label="Готов помочь с:" tags={data?.canHelpWith} />
-        <TextField label="Описание" text={data?.description} />
-      </div>
+      {data?.validProfile !== false ? (
+        <ProfileInformation data={data} />
+      ) : (
+        <h5>
+          Профиль недоступен публично, так как еще не все поля были заполнены
+        </h5>
+      )}
       <Button onClick={navigation.goToEditProfile} outline type="primary">
         Изменить информацию в профиле
       </Button>
@@ -48,7 +28,6 @@ const Profile = () => {
       </Button>
     </div>
   );
-  return <Spinner size={20} />;
 };
 
 export default Profile;
