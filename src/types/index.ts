@@ -12,6 +12,7 @@ export interface Profile {
   canHelpWith?: string[];
   language?: string[];
   validProfile?: boolean;
+  _id?: string;
 }
 
 export interface TariffItem {

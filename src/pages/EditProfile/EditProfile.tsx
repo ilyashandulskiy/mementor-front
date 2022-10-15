@@ -4,6 +4,7 @@ import ProfileForm from './components/ProfileForm';
 import { Profile } from 'types';
 import useNavigation from 'hooks/useNavigation';
 import { useProfile } from 'hooks/useProfile';
+import constants from 'helpers/constants';
 
 const EditProfile = () => {
   const [saving, setSaving] = useState(false);
@@ -23,7 +24,14 @@ const EditProfile = () => {
     <div className={styles.container}>
       <h2>НАСТРОЙКА ПРОФИЛЯ</h2>
       <ProfileForm
-        defaultValues={data.grade ? data : ({ email: data.email } as Profile)}
+        defaultValues={
+          data.grade
+            ? data
+            : ({
+                email: data.email,
+                tariff: constants.defaultTariffs,
+              } as Profile)
+        }
         loading={saving}
         onChange={(val) => onSave(val as Profile)}
       />

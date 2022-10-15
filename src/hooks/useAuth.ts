@@ -15,18 +15,28 @@ const useAuth = () => {
 
   return {
     login: async (email: string, password: string) => {
-      const token = await api.login(email, password);
-      if (token) singIn({ ...singInConfig, token, authState: { email } });
-      return !!token;
+      const response = await api.login(email, password);
+      if (response?.token)
+        singIn({
+          ...singInConfig,
+          token: response.token,
+          authState: { email },
+        });
+      return !!response?.token;
     },
     logout: () => {
       singOut();
       queryClient.setQueryData<Profile>('profile', {} as Profile);
     },
     register: async (email: string, password: string) => {
-      const token = await api.register(email, password);
-      if (token) singIn({ ...singInConfig, token, authState: { email } });
-      return !!token;
+      const response = await api.register(email, password);
+      if (response?.token)
+        singIn({
+          ...singInConfig,
+          token: response.token,
+          authState: { email },
+        });
+      return !!response?.token;
     },
   };
 };

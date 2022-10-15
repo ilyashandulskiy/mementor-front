@@ -4,6 +4,7 @@ import EditProfile from 'pages/EditProfile';
 import Profile from 'pages/Profile';
 import { ReactNode } from 'react';
 import Mentor from 'pages/Mentor';
+import MentorsList from 'pages/MentorsList';
 
 type Routes = {
   path: string;
@@ -44,6 +45,10 @@ const commonRoutes = [
   {
     path: '/mentor/:id',
     element: <Mentor />,
+  },
+  {
+    path: '/mentor',
+    element: <MentorsList />,
   },
 ];
 

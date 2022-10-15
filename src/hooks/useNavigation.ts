@@ -8,6 +8,8 @@ const useNavigation = () => {
     goToRegistration: () => navigate('/register'),
     goToEditProfile: () => navigate('/edit'),
     goToProfile: () => navigate('/profile'),
+    goToMentor: (id: string) => navigate('/mentor/' + id),
+    goToMentorsList: () => navigate('/mentor'),
   };
 };
 
