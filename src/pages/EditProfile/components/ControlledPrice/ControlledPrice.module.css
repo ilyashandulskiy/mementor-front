@@ -1,0 +1,8 @@
+
+.priceContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 60px;
+}

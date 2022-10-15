@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ProfileInformation.module.css';
 import TextField from 'components/ui/TextField';
 import { Profile } from 'types';
+import PriceBlock from 'components/PriceBlock';
 
 interface Props {
   data?: Profile;
@@ -35,6 +36,18 @@ const ProfileInformation = ({ data }: Props) => {
         </div>
         <TextField label="Готов помочь с:" tags={data?.canHelpWith} />
         <TextField label="Описание" text={data?.description} />
+
+        <div className={styles.priceContainer}>
+          {data?.tariff?.map((tariff) => (
+            <PriceBlock
+              buttonText="Взять"
+              onClick={() => console.log('tariff taken')}
+              price={tariff.price}
+              name={tariff.name}
+              description={tariff.description}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form';
 import patterns from 'helpers/patterns';
 import { Profile } from 'types';
 import ControlledTags from 'components/form-ui/ControlledTags';
+import ControlledPrice from 'pages/EditProfile/components/ControlledPrice/ControlledPrice';
 
 interface Props {
   loading: boolean;
@@ -27,8 +28,13 @@ const ProfileForm = ({ loading, onChange, defaultValues }: Props) => {
     formState: { errors },
   } = useForm({ mode: 'onBlur', defaultValues });
 
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    handleSubmit(onChange)();
+  };
+
   return (
-    <Form onSubmit={handleSubmit(onChange)}>
+    <Form formId="profile">
       <div className={styles.fields}>
         <div className={styles.row}>
           <Input
@@ -105,8 +111,10 @@ const ProfileForm = ({ loading, onChange, defaultValues }: Props) => {
         />
       </div>
 
+      <ControlledPrice control={control} rules={{ required: true }} />
+
       <div className={styles.buttons}>
-        <Button loading={loading} submit type="primary">
+        <Button loading={loading} onClick={onSubmit} submit type="primary">
           Сохранить настройки профиля
         </Button>
         <Button onClick={navigation.goToRegistration} outline type="primary">

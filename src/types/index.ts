@@ -8,8 +8,14 @@ export interface Profile {
   grade: 'junior' | 'middle' | 'senior';
   description?: string;
   education?: { place: string; department: string }[];
-  tariff?: { price: number; name: string }[];
+  tariff?: { price: number; name: string; description: string }[];
   canHelpWith?: string[];
   language?: string[];
   validProfile?: boolean;
+}
+
+export interface TariffItem {
+  price: number;
+  name: string;
+  description: string;
 }

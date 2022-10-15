@@ -2,11 +2,12 @@ import React, { ReactNode } from 'react';
 
 interface Props extends React.FormHTMLAttributes<HTMLFormElement> {
   children: ReactNode | ReactNode[];
+  formId?: string;
 }
 
-function Form({ children, ...props }: Props) {
+function Form({ children, formId, ...props }: Props) {
   return (
-    <form noValidate {...props}>
+    <form key={formId} noValidate {...props}>
       {children}
     </form>
   );

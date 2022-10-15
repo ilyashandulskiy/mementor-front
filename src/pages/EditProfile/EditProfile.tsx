@@ -5,10 +5,6 @@ import { Profile } from 'types';
 import useNavigation from 'hooks/useNavigation';
 import { useProfile } from 'hooks/useProfile';
 
-const demoData = {
-  tariff: [{ price: 1000, name: 'час' }],
-};
-
 const EditProfile = () => {
   const [saving, setSaving] = useState(false);
   const { save, data } = useProfile();
@@ -16,8 +12,7 @@ const EditProfile = () => {
 
   const onSave = async (val: Profile) => {
     setSaving(true);
-    const newData = { ...val, ...demoData };
-    await save(newData);
+    await save(val);
     setSaving(false);
     navigation.goToProfile();
   };

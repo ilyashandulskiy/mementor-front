@@ -7,7 +7,7 @@ interface Props {
   children: ReactNode | ReactNode[];
   type?: 'primary' | 'secondary';
   outline?: boolean;
-  onClick?: () => void;
+  onClick?: (e: any) => void;
   className?: string;
   disabled?: boolean;
   loading?: boolean;

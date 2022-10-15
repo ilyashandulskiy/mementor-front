@@ -6,11 +6,12 @@ interface Props extends HTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   placeholder?: string;
   error?: boolean;
+  errorText?: string;
 }
 
 const TextArea = forwardRef(
   (
-    { label, placeholder, error, ...props }: Props,
+    { label, placeholder, error, errorText, ...props }: Props,
     ref: Ref<HTMLTextAreaElement>
   ) => {
     return (
@@ -28,7 +29,11 @@ const TextArea = forwardRef(
             { [styles.inputError]: error },
           ])}
         />
-        {error && <p className={styles.error}>Поле заполнено не верно</p>}
+        {error && (
+          <p className={styles.error}>
+            {errorText || 'Поле заполнено не верно'}
+          </p>
+        )}
       </div>
     );
   }

@@ -43,3 +43,10 @@ h3, h4, h5, h6 {
 .modal-content {
   border: none !important;
 }
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}

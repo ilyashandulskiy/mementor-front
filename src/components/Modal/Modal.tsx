@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import React, { ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 
 interface Props {
   opened: boolean;
@@ -21,7 +22,7 @@ function Modal({ opened, children, title, onClose }: Props) {
     background: 'rgba(0,0,0,0.5)',
   };
   const styles: Styles = { pointerEvents: opened ? 'all' : 'none' };
-  return (
+  return createPortal(
     <div
       className={cn(['modal', 'fade', { show: opened }])}
       style={backdropStyles}
@@ -37,7 +38,8 @@ function Modal({ opened, children, title, onClose }: Props) {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById('modal')!
   );
 }
 
