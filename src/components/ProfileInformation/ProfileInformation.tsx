@@ -41,7 +41,6 @@ const ProfileInformation = ({ data }: Props) => {
           {data?.tariff?.map((tariff) => (
             <PriceBlock
               buttonText="Взять"
-              onClick={() => console.log('tariff taken')}
               price={tariff.price}
               name={tariff.name}
               description={tariff.description}

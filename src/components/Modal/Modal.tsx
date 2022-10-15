@@ -22,6 +22,8 @@ function Modal({ opened, children, title, onClose }: Props) {
     background: 'rgba(0,0,0,0.5)',
   };
   const styles: Styles = { pointerEvents: opened ? 'all' : 'none' };
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const DOMelement = document.getElementById('modal')!;
   return createPortal(
     <div
       className={cn(['modal', 'fade', { show: opened }])}
@@ -39,7 +41,7 @@ function Modal({ opened, children, title, onClose }: Props) {
         </div>
       </div>
     </div>,
-    document.getElementById('modal')!
+    DOMelement
   );
 }
 

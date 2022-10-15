@@ -9,7 +9,7 @@ interface Props {
   price: number;
   description: string;
   buttonText: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const PriceBlock = ({
