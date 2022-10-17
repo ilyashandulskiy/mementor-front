@@ -12,3 +12,11 @@
 .card {
     width: 50%;
 }
+
+.list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: stretch;
+}

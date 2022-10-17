@@ -1,13 +1,17 @@
-import { useQuery } from 'react-query';
+import { useInfiniteQuery } from 'react-query';
 import useApi from './useApi';
 
-interface Props {
-  page: number;
-}
-
-export const useMentorsList = ({ page }: Props) => {
+export const useMentorsList = () => {
   const api = useApi();
   return {
-    ...useQuery('mentors', async () => api.getMentorsList(page)),
+    ...useInfiniteQuery(
+      ['mentors'],
+      async ({ pageParam = 1 }) => api.getMentorsList(pageParam),
+      {
+        getNextPageParam: (lastPage, allPages) => {
+          return allPages.length + 1;
+        },
+      }
+    ),
   };
 };
