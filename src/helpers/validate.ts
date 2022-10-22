@@ -1,6 +1,6 @@
 const validate = {
   isPositiveNumber(val: number) {
-    return val >= 0;
+    return val >= 0 && val < 1000000;
   },
 };
 

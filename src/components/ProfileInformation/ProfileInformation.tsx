@@ -6,9 +6,10 @@ import PriceBlock from 'components/PriceBlock';
 
 interface Props {
   data?: Profile;
+  onTariffClick?: (val: number) => void;
 }
 
-const ProfileInformation = ({ data }: Props) => {
+const ProfileInformation = ({ data, onTariffClick }: Props) => {
   return (
     <>
       <h2>
@@ -38,12 +39,13 @@ const ProfileInformation = ({ data }: Props) => {
         <TextField label="Описание" text={data?.description} />
 
         <div className={styles.priceContainer}>
-          {data?.tariff?.map((tariff) => (
+          {data?.tariff?.map((tariff, index) => (
             <PriceBlock
               buttonText="Взять"
               price={tariff.price}
               name={tariff.name}
               description={tariff.description}
+              onClick={() => onTariffClick && onTariffClick(index)}
             />
           ))}
         </div>

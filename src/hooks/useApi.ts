@@ -1,5 +1,5 @@
 import useFetch from './useFetch';
-import { Profile } from 'types';
+import { BookingRequest, Profile } from 'types';
 
 interface AuthResponse {
   token: string;
@@ -26,6 +26,9 @@ const useApi = () => {
     },
     async saveProfile(data: Profile) {
       return await fetch.put<string>('mentor', data);
+    },
+    async bookTariff(data: BookingRequest) {
+      return await fetch.post('book', data);
     },
   };
 };

@@ -20,3 +20,15 @@ export interface TariffItem {
   name: string;
   description: string;
 }
+
+export interface BookingRequest {
+  customerName: string;
+  customerTelegram: string;
+  mentorId: string;
+  tariffIndex: number;
+}
+
+export interface BookingFormResponse {
+  customerName: string;
+  customerTelegram: string;
+}
