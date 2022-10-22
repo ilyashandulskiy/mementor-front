@@ -4,6 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useMentorsList } from 'hooks/useMentorsList';
 import { Profile } from 'types';
 import Card from 'components/Card';
+import Spinner from 'components/ui/Spinner';
 
 const MentorsList = () => {
   const { data, fetchNextPage, getPages } = useMentorsList();
@@ -20,15 +21,15 @@ const MentorsList = () => {
       <h2>Менторы на платформе</h2>
       <InfiniteScroll
         next={fetchNextPage}
-        hasMore={pages > (data?.pages.length || 1)}
+        hasMore={pages - 1 > (data?.pages.length || 1)}
         className={styles.list}
-        loader={null}
+        loader={<Spinner size={10} />}
         dataLength={mentors.length || 0}
       >
-        {mentors?.length &&
+        {!!mentors?.length &&
           mentors
             .flat()
-            .map((mentor: Profile) => <Card key={mentor._id} {...mentor} />)}
+            .map((mentor: Profile) => <Card key={mentor?._id} {...mentor} />)}
       </InfiniteScroll>
     </div>
   );

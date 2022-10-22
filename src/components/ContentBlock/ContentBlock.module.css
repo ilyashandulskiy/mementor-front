@@ -8,6 +8,7 @@
     transition: width;
     width: auto;
     transition-duration: 2s;
+    justify-content: center;
     margin-top: 30px;
 }
 
