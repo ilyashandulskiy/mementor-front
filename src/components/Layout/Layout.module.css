@@ -24,3 +24,15 @@
 
     cursor: pointer;
 }
+
+.profileButton {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+}
+
+.profileIcon {
+    width: 15px;
+    margin-right: 7px;
+    translate: 0 -2px;
+}

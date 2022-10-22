@@ -3,11 +3,11 @@ import { Route, Routes } from 'react-router';
 import { AnimatePresence } from 'framer-motion';
 import ContentBlock from 'components/ContentBlock';
 import useRoutes from 'hooks/useRoutes';
-import { useIsAuthenticated } from 'react-auth-kit';
+import useAuth from 'hooks/useAuth';
 
 const Navigation = () => {
-  const auth = useIsAuthenticated();
-  const routes = useRoutes(auth());
+  const { isAuthed } = useAuth();
+  const routes = useRoutes(isAuthed());
 
   return (
     <AnimatePresence>

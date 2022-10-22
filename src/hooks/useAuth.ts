@@ -1,4 +1,4 @@
-import { useSignIn, useSignOut } from 'react-auth-kit';
+import { useIsAuthenticated, useSignIn, useSignOut } from 'react-auth-kit';
 import useApi from './useApi';
 import queryClient from 'services/queryClient';
 import { Profile } from 'types';
@@ -12,8 +12,10 @@ const useAuth = () => {
   const singIn = useSignIn();
   const singOut = useSignOut();
   const api = useApi();
+  const isAuthed = useIsAuthenticated();
 
   return {
+    isAuthed,
     login: async (email: string, password: string) => {
       const response = await api.login(email, password);
       if (response?.token)
