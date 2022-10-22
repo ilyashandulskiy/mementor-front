@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import styles from './MentorsList.module.css';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useMentorsList } from 'hooks/useMentorsList';
@@ -6,18 +6,21 @@ import { Profile } from 'types';
 import Card from 'components/Card';
 
 const MentorsList = () => {
-  const { data, fetchNextPage } = useMentorsList();
+  const { data, fetchNextPage, getPages } = useMentorsList();
+  const [pages, setPages] = useState(1);
+  getPages.then(setPages);
 
-  // @ts-ignore
-  const mentors: Profile[] = data?.pages.flat() || ([] as Profile[]);
-  console.log(mentors, data?.pages.length);
+  const mentors: Profile[] = useMemo(
+    () => data?.pages.flat() || ([] as Profile[]),
+    [data?.pages]
+  );
 
   return (
     <div className={styles.container}>
       <h2>Менторы на платформе</h2>
       <InfiniteScroll
         next={fetchNextPage}
-        hasMore={true}
+        hasMore={pages > (data?.pages.length || 1)}
         className={styles.list}
         loader={null}
         dataLength={mentors.length || 0}

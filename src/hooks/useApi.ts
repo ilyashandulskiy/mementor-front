@@ -22,7 +22,12 @@ const useApi = () => {
       return await fetch.get<Profile>('mentor/' + id);
     },
     async getMentorsList(page: number) {
-      return await fetch.post<Profile[]>('mentor/' + page, {});
+      const { mentors } = await fetch.post<any>('mentor/' + page, {});
+      return mentors as Profile[];
+    },
+    async getMentorsListPageCount() {
+      const { pages } = await fetch.post<any>('mentor/0', {});
+      return pages as number;
     },
     async saveProfile(data: Profile) {
       return await fetch.put<string>('mentor', data);

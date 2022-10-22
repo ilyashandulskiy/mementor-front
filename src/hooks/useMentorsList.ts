@@ -13,5 +13,6 @@ export const useMentorsList = () => {
         },
       }
     ),
+    getPages: api.getMentorsListPageCount(),
   };
 };
