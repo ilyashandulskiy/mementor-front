@@ -3,6 +3,8 @@ import styles from '../../ControlledPrice.module.css';
 import PriceBlock from 'components/PriceBlock';
 import PriceEditModal from 'pages/EditProfile/components/PriceEditModal';
 import { TariffItem } from 'types';
+import cn from 'classnames';
+import useMedia from 'hooks/useMedia';
 
 interface Props {
   value: TariffItem[];
@@ -14,6 +16,7 @@ export interface CurrentTariffEditing extends TariffItem {
 }
 
 const PriceField = ({ value, setValue }: Props) => {
+  const { isMobile } = useMedia();
   const [priceModalOpened, setPriceModalOpened] = useState(false);
   const [currentTariffEditing, setCurrentTariffEditing] =
     useState<CurrentTariffEditing>({} as CurrentTariffEditing);
@@ -31,7 +34,12 @@ const PriceField = ({ value, setValue }: Props) => {
 
   return (
     <>
-      <div className={styles.priceContainer}>
+      <div
+        className={cn([
+          styles.priceContainer,
+          { [styles.priceContainerMobile]: isMobile },
+        ])}
+      >
         {value?.map((tariff, index) => (
           <PriceBlock
             buttonText="Изменить"

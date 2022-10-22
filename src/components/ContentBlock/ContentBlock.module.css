@@ -1,4 +1,5 @@
 .block {
+    display: flex;
     min-width: 300px;
     min-height: 300px;
     background: #FFFFFF;
@@ -7,4 +8,12 @@
     transition: width;
     width: auto;
     transition-duration: 2s;
+    margin-top: 30px;
+}
+
+.blockMobile {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    min-height: 100vh;
 }
