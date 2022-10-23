@@ -3,22 +3,46 @@ import styles from './Card.module.css';
 import cn from 'classnames';
 import { Profile } from 'types';
 import useNavigation from 'hooks/useNavigation';
+import cash from 'helpers/cash';
+import text from 'helpers/text';
 
 type Props = Partial<Profile>;
 
-const Card = ({ name, surname, programmingLanguage, grade, _id }: Props) => {
+const Card = ({
+  name,
+  surname,
+  tariff,
+  grade,
+  programmingLanguage,
+  description,
+  _id,
+}: Props) => {
   const navigation = useNavigation();
+
+  const programmingLanguageList = programmingLanguage?.join(', ');
 
   return (
     <div
       onClick={() => navigation.goToMentor(_id || '')}
       className={cn(['card', styles.card])}
     >
-      <div className="card-body">
-        <h5 className="card-title">
-          {name} {surname} ({grade})
-        </h5>
-        <p className="card-text">{JSON.stringify(programmingLanguage)}</p>
+      <div className={cn(['card-body', styles.cardBody])}>
+        <div className={styles.icon} />
+        <div className={styles.badge}>{grade}</div>
+        <div className={styles.cardInformation}>
+          <h5 className="card-title">
+            {name} {surname}
+            <span className={styles.programmingLanguagesList}>
+              {programmingLanguageList}
+            </span>
+          </h5>
+          <p className="card-text">{text.limit(description || '', 150)}</p>
+        </div>
+        <div className={styles.priceBlock}>
+          {tariff?.map(({ price }) => (
+            <h6>{cash.display(price)}</h6>
+          ))}
+        </div>
       </div>
     </div>
   );

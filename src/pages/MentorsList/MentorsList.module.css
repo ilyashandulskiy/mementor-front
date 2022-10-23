@@ -10,7 +10,7 @@
 }
 
 .card {
-    width: 50%;
+    width: 100%;
 }
 
 .list {
@@ -19,4 +19,5 @@
     flex-wrap: wrap;
     gap: 10px;
     justify-content: stretch;
+    overflow: visible !important;
 }
