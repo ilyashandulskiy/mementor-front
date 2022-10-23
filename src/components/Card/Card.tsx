@@ -5,6 +5,7 @@ import { Profile } from 'types';
 import useNavigation from 'hooks/useNavigation';
 import cash from 'helpers/cash';
 import text from 'helpers/text';
+import useMedia from 'hooks/useMedia';
 
 type Props = Partial<Profile>;
 
@@ -18,6 +19,7 @@ const Card = ({
   _id,
 }: Props) => {
   const navigation = useNavigation();
+  const { isMobile } = useMedia();
 
   const programmingLanguageList = programmingLanguage?.join(', ');
 
@@ -38,11 +40,13 @@ const Card = ({
           </h5>
           <p className="card-text">{text.limit(description || '', 150)}</p>
         </div>
-        <div className={styles.priceBlock}>
-          {tariff?.map(({ price }) => (
-            <h6>{cash.display(price)}</h6>
-          ))}
-        </div>
+        {!isMobile && (
+          <div className={styles.priceBlock}>
+            {tariff?.map(({ price }) => (
+              <h6>{cash.display(price)}</h6>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

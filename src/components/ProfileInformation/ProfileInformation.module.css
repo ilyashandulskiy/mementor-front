@@ -13,6 +13,7 @@
     flex-direction: column;
     gap: 20px;
     flex: 1;
+    margin-top: 100px;
 }
 
 .row {
@@ -42,4 +43,16 @@
 .priceContainerMobile {
     flex-direction: column;
     justify-content: stretch;
+}
+
+.icon {
+    position: absolute;
+    translate: 0 -100px;
+    left: calc(50% - 100px);
+
+    background-color: lightgray;
+    border: 10px solid white;
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
 }

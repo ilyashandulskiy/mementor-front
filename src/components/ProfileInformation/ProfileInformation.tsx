@@ -16,9 +16,10 @@ const ProfileInformation = ({ data, onTariffClick }: Props) => {
 
   return (
     <>
-      <h2>
-        Профиль {data?.name} {data?.surname}
-      </h2>
+      <img
+        src="https://photo9.wambacdn.net/44/84/04/1749404844/1785668513_huge.jpg?hash=rS6IY83UPoUS4XEeN9MwRw&expires=64060578000&updated=1500977830"
+        className={styles.icon}
+      />
       <div className={styles.fields}>
         <div className={cn([styles.row, { [styles.rowMobile]: isMobile }])}>
           <TextField label="Имя" text={data?.name} />
