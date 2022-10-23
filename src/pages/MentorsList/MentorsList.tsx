@@ -23,7 +23,7 @@ const MentorsList = () => {
         next={fetchNextPage}
         hasMore={pages - 1 > (data?.pages.length || 1)}
         className={styles.list}
-        loader={<Spinner size={10} />}
+        loader={<Spinner color="accent" size={10} />}
         dataLength={mentors.length || 0}
       >
         {!!mentors?.length &&

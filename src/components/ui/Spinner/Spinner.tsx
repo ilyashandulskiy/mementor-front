@@ -3,10 +3,13 @@ import { BeatLoader } from 'react-spinners';
 
 interface Props {
   size: number;
+  color: 'accent' | 'white';
 }
 
-const Spinner = ({ size }: Props) => {
-  return <BeatLoader size={size} color="white" />;
+const Spinner = ({ size, color }: Props) => {
+  return (
+    <BeatLoader size={size} color={color === 'white' ? 'white' : '#81BC55'} />
+  );
 };
 
 export default Spinner;

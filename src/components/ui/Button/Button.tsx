@@ -36,7 +36,11 @@ const Button = ({
         className,
       ])}
     >
-      {loading ? <Spinner size={7} /> : children}
+      {loading ? (
+        <Spinner color={outline ? 'accent' : 'white'} size={7} />
+      ) : (
+        children
+      )}
     </button>
   );
 };
