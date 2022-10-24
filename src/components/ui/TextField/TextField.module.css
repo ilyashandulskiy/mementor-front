@@ -19,6 +19,8 @@
 }
 
 .container {
+    position: relative;
+    height: 60px;
     width: 100%;
 }
 
@@ -60,4 +62,14 @@
     border-radius: 5px;
     color: white;
     padding: 4px 8px;
+}
+
+.wrapper {
+    position: absolute;
+    transition: 0.2s;
+    opacity: 1;
+}
+
+.hide {
+    opacity: 0;
 }
