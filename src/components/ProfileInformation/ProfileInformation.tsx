@@ -9,9 +9,14 @@ import cn from 'classnames';
 interface Props {
   data?: Profile;
   onTariffClick?: (val: number) => void;
+  isProfileOfCurrentUser?: boolean;
 }
 
-const ProfileInformation = ({ data, onTariffClick }: Props) => {
+const ProfileInformation = ({
+  data,
+  onTariffClick,
+  isProfileOfCurrentUser,
+}: Props) => {
   const { isMobile } = useMedia();
 
   return (
@@ -51,6 +56,7 @@ const ProfileInformation = ({ data, onTariffClick }: Props) => {
         >
           {data?.tariff?.map((tariff, index) => (
             <PriceBlock
+              disableActions={isProfileOfCurrentUser}
               buttonText="Взять"
               price={tariff.price}
               name={tariff.name}

@@ -8,8 +8,9 @@ interface Props {
   name: string;
   price: number;
   description: string;
-  buttonText: string;
+  buttonText?: string;
   onClick?: () => void;
+  disableActions?: boolean;
 }
 
 const PriceBlock = ({
@@ -18,6 +19,7 @@ const PriceBlock = ({
   description,
   buttonText,
   onClick,
+  disableActions,
 }: Props) => {
   return (
     <div className={cn(['card', 'box-shadow', styles.wrapper])}>
@@ -27,7 +29,7 @@ const PriceBlock = ({
       <div className={cn(['card-body', styles.container])}>
         <h2 className="card-title pricing-card-title">{cash.display(price)}</h2>
         <p>{description}</p>
-        <Button onClick={onClick} type="primary">
+        <Button onClick={onClick} type="primary" disabled={disableActions}>
           {buttonText}
         </Button>
       </div>

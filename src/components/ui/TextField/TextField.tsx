@@ -13,7 +13,9 @@ const TextField = ({ label, text, tags }: Props) => {
 
   return (
     <div className={styles.container}>
-      <div className={cn([styles.wrapper, { [styles.hide]: !loading }])}>
+      <div
+        className={cn([styles.skeletonWrapper, { [styles.hide]: !loading }])}
+      >
         {label && <div className={styles.skeletonLabel} />}
         <div className={styles.skeletonText} />
       </div>

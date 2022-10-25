@@ -20,7 +20,7 @@
 
 .container {
     position: relative;
-    height: 60px;
+    min-height: 60px;
     width: 100%;
 }
 
@@ -65,6 +65,11 @@
 }
 
 .wrapper {
+    transition: 0.2s;
+    opacity: 1;
+}
+
+.skeletonWrapper {
     position: absolute;
     transition: 0.2s;
     opacity: 1;

@@ -14,7 +14,7 @@ const Profile = () => {
   return (
     <div className={styles.container}>
       {data?.validProfile !== false ? (
-        <ProfileInformation data={data} />
+        <ProfileInformation data={data} isProfileOfCurrentUser={true} />
       ) : (
         <h5>
           Профиль недоступен публично, так как еще не все поля были заполнены
