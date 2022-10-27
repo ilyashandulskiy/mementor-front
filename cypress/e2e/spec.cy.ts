@@ -15,6 +15,22 @@ describe('user authentication', () => {
     cy.contains(`${number} ${number}${number}${number} ₽`);
   }
 
+  function checkProfileValidity() {
+    checkTariff('1');
+    checkTariff('2');
+    checkTariff('3');
+    cy.contains(email);
+    cy.contains('Username');
+    cy.contains('Usersurname');
+    cy.contains('2020');
+    cy.contains('middle');
+    cy.contains('Русский');
+    cy.contains('English');
+    cy.contains('Github');
+    cy.contains('Получением навыков');
+    cy.contains('Описание ментора');
+  }
+
   it('should only allow login with correct credentials', () => {
     cy.visit('http://localhost:3000/test-drive/mementor/', { timeout: 9000 });
     cy.contains('Войти').click();
@@ -36,6 +52,12 @@ describe('user authentication', () => {
     cy.get('#Email').click().type(email);
     cy.get('#Пароль').click().type('password');
     cy.contains('Создать').click();
+  });
+
+  it('should not display user while it is not valid', () => {
+    cy.contains('Отменить').click();
+    cy.contains('Профиль недоступен публично');
+    cy.contains('Изменить').click();
   });
 
   it('should not allow to save user with wrong data', () => {
@@ -68,18 +90,20 @@ describe('user authentication', () => {
   });
 
   it('should display user data correctly', () => {
-    checkTariff('1');
-    checkTariff('2');
-    checkTariff('3');
-    cy.contains(email);
-    cy.contains('Username');
-    cy.contains('Usersurname');
-    cy.contains('2020');
-    cy.contains('middle');
-    cy.contains('Русский');
-    cy.contains('English');
-    cy.contains('Github');
-    cy.contains('Получением навыков');
-    cy.contains('Описание ментора');
+    cy.contains('Изменить информацию в профиле');
+    checkProfileValidity();
+    cy.reload();
+  });
+
+  it('should login previous account', () => {
+    cy.get('#Email').click().type(email);
+    cy.get('#Пароль').click().type('password');
+    cy.contains('Поле заполнено не верно').should('not.exist');
+    cy.contains('Длина пароля должна быть минимум 6 символов').should(
+      'not.exist'
+    );
+    cy.contains('Войти').click();
+    cy.contains('Изменить информацию в профиле');
+    checkProfileValidity();
   });
 });
