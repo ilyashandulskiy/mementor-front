@@ -41,7 +41,7 @@ const useFetch = () => {
         const { data } = await instance.get<T>(baseUrl + url);
         return data;
       } catch (err) {
-        handleError(err as AxiosError);
+        if (err instanceof axios.AxiosError) handleError(err as AxiosError);
       }
     },
     async post<T>(url: string, body: any) {
@@ -49,7 +49,7 @@ const useFetch = () => {
         const { data } = await instance.post<T>(baseUrl + url, body);
         return data;
       } catch (err) {
-        handleError(err as AxiosError);
+        if (err instanceof axios.AxiosError) handleError(err as AxiosError);
       }
     },
     async put<T>(url: string, body: any) {
