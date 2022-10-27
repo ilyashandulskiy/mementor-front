@@ -1,6 +1,7 @@
 import React, { forwardRef, HTMLAttributes, Ref } from 'react';
 import styles from './Input.module.css';
 import cn from 'classnames';
+import id from 'helpers/id';
 
 interface Props extends HTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -20,7 +21,7 @@ const Input = forwardRef(
         {label && <p className={styles.label}>{label}</p>}
         <input
           {...props}
-          id="new-password"
+          id={id.generateInputId(label || placeholder)}
           autoComplete="new-password"
           type={password ? 'password' : 'text'}
           ref={ref}

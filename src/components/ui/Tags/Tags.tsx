@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Tags.module.css';
 import cn from 'classnames';
+import id from 'helpers/id';
 
 interface Props {
   label?: string;
@@ -57,6 +58,7 @@ const Tags = ({
           </div>
         ))}
         <input
+          id={id.generateInputId(label)}
           placeholder={!tags.length ? placeholder : ''}
           value={text}
           onInput={(val) => setText(val.currentTarget.value)}

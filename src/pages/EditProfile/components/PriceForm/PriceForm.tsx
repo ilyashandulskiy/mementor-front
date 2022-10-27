@@ -48,7 +48,7 @@ const PriceForm = ({ onChange, defaultValues, onClose }: Props) => {
         <TextArea
           {...register('description', { required: true, maxLength: 255 })}
           error={!!errors?.description}
-          label="Описание"
+          label="Описание тарифа"
           errorText="Длина должна быть меньше 255 символов"
         />
       </div>

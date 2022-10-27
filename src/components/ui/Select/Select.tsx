@@ -1,5 +1,6 @@
 import React, { forwardRef, HTMLAttributes, ReactNode, Ref } from 'react';
 import styles from './Select.module.css';
+import id from 'helpers/id';
 
 interface Props extends HTMLAttributes<HTMLSelectElement> {
   label?: string;
@@ -11,7 +12,12 @@ const Select = forwardRef(
     return (
       <div className={styles.container}>
         {label && <p className={styles.label}>{label}</p>}
-        <select {...props} ref={ref} className="form-select">
+        <select
+          id={id.generateInputId(label)}
+          {...props}
+          ref={ref}
+          className="form-select"
+        >
           {children}
         </select>
       </div>

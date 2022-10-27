@@ -1,6 +1,7 @@
 import React, { forwardRef, HTMLAttributes, Ref } from 'react';
 import styles from './TextArea.module.css';
 import cn from 'classnames';
+import id from 'helpers/id';
 
 interface Props extends HTMLAttributes<HTMLTextAreaElement> {
   label?: string;
@@ -19,7 +20,7 @@ const TextArea = forwardRef(
         {label && <p className={styles.label}>{label}</p>}
         <textarea
           {...props}
-          id="new-password"
+          id={id.generateInputId(label || placeholder)}
           autoComplete="new-password"
           ref={ref}
           placeholder={placeholder}
