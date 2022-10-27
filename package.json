@@ -31,7 +31,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test:dev": "react-scripts test && npx cypress run",
+    "test": "npx cypress run",
     "eject": "react-scripts eject",
     "lint": "npx eslint --fix .",
     "sb": "start-storybook -p 6006 -s public",

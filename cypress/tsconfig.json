@@ -1,6 +1,7 @@
 {
   "include": [
     "**/*.ts",
-    "../cypress.d.ts"
+    "../cypress.d.ts",
+    "../node_modules/cypress/types/cypress-global-vars.d.ts"
   ]
 }
