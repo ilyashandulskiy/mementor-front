@@ -12,6 +12,7 @@ const FadeIn = ({ children }: Props) => {
       initial={{ translateX: -40, opacity: 0 }}
       animate={{ translateX: 0, opacity: 1 }}
       exit={{ translateX: 40, opacity: 0 }}
+      style={{ width: '100%', height: '100%', display: 'flex' }}
     >
       {children}
     </motion.div>

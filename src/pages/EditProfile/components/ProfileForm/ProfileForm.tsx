@@ -113,7 +113,7 @@ const ProfileForm = ({ loading, onChange, defaultValues }: Props) => {
         <Button loading={loading} onClick={onSubmit} submit type="primary">
           Сохранить настройки профиля
         </Button>
-        <Button onClick={navigation.goToRegistration} outline type="primary">
+        <Button onClick={navigation.goToProfile} outline type="primary">
           Отменить изменения
         </Button>
       </div>

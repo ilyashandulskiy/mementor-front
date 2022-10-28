@@ -14,6 +14,13 @@ export interface BasicResponse {
   message?: string;
 }
 
+export interface Education {
+  /** @example "computer science" */
+  department: string;
+  /** @example "MGU" */
+  place: string;
+}
+
 export interface GetMentorResponse {
   /** @example "634afbd6c7cc8190a74feb35" */
   _id?: string;
@@ -29,7 +36,7 @@ export interface GetMentorResponse {
   /** @example 2019 */
   experienceSince: number;
   /** @example "junior" */
-  grade: "junior" | "middle" | "senior";
+  grade: 'junior' | 'middle' | 'senior';
   /** @example ["ru"," en"] */
   language?: string[];
   /** @example "Test" */
@@ -43,6 +50,22 @@ export interface GetMentorResponse {
   technology: string[];
   /** @example true */
   validProfile?: boolean;
+}
+
+export interface Mentor {
+  /** @example "634afbd6c7cc8190a74feb35" */
+  _id?: string;
+  /** @example "junior" */
+  grade: 'junior' | 'middle' | 'senior';
+  /** @example ["russian"," english"] */
+  language?: string[];
+  /** @example "Test" */
+  name: string;
+  /** @example ["python","js","trash"] */
+  programmingLanguage: string[];
+  /** @example "Subject" */
+  surname: string;
+  tariff: Tariff[];
 }
 
 export interface PostAuthRequest {
@@ -82,11 +105,11 @@ export interface PostMentorRequest {
   description?: string;
   education?: Education[];
   /** @example "mrmarkeld@gmail.com" */
-  email?: string;
+  email: string;
   /** @example 2019 */
   experienceSince: number;
   /** @example "junior" */
-  grade: string;
+  grade: 'junior' | 'middle' | 'senior';
   /** @example ["ru"," en"] */
   language?: string[];
   /** @example "Test" */
@@ -119,11 +142,11 @@ export interface PutMentorRequest {
   description?: string;
   education?: Education[];
   /** @example "mrmarkeld@gmail.com" */
-  email?: string;
+  email: string;
   /** @example 2019 */
   experienceSince: number;
   /** @example "junior" */
-  grade: string;
+  grade: 'junior' | 'middle' | 'senior';
   /** @example ["ru"," en"] */
   language?: string[];
   /** @example "Test" */
@@ -137,29 +160,6 @@ export interface PutMentorRequest {
   technology: string[];
   /** @example true */
   validProfile?: boolean;
-}
-
-export interface Education {
-  /** @example "computer science" */
-  department: string;
-  /** @example "MGU" */
-  place: string;
-}
-
-export interface Mentor {
-  /** @example "634afbd6c7cc8190a74feb35" */
-  _id?: string;
-  /** @example "junior" */
-  grade: string;
-  /** @example ["russian"," english"] */
-  language?: string[];
-  /** @example "Test" */
-  name: string;
-  /** @example ["python","js","trash"] */
-  programmingLanguage: string[];
-  /** @example "Subject" */
-  surname: string;
-  tariff: Tariff[];
 }
 
 export interface Tariff {

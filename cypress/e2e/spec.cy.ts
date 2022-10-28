@@ -33,7 +33,7 @@ describe('user authentication', () => {
 
   it('should only allow login with correct credentials', () => {
     cy.visit('http://localhost:3000/test-drive/mementor/', { timeout: 9000 });
-    cy.contains('Войти').click();
+    cy.contains('Войти в аккаунт').click();
     cy.contains('Поле заполнено не верно');
     cy.contains('Длина пароля должна быть минимум 6 символов');
     cy.get('#Email').click().type('testmail@mail.com');
@@ -102,7 +102,7 @@ describe('user authentication', () => {
     cy.contains('Длина пароля должна быть минимум 6 символов').should(
       'not.exist'
     );
-    cy.contains('Войти').click();
+    cy.contains('Войти в аккаунт').click();
     cy.contains('Изменить информацию в профиле');
     checkProfileValidity();
   });

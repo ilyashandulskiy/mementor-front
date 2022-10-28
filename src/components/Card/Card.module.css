@@ -29,8 +29,8 @@
 }
 
 .icon {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border-radius: 100%;
     background-color: lightgray;
     margin-right: 20px;
@@ -38,8 +38,8 @@
 
 .badge {
     position: absolute;
-    left: 70px;
-    top: 95px;
+    left: 50px;
+    top: 65px;
     background-color: white;
     border-top-left-radius: 10px;
     padding: 4px;
