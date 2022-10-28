@@ -14,6 +14,7 @@ const Mentor = () => {
   const { id } = useParams();
   const api = useApi();
   const toast = useToast();
+  const [loading, setLoading] = useState(false);
   const [bookingOpened, setBookingOpened] = useState(false);
   const [tariffSelected, setTariffSelected] = useState(0);
   const navigation = useNavigation();
@@ -29,11 +30,13 @@ const Mentor = () => {
   };
 
   const onBooking = async (data: BookingFormResponse) => {
+    setLoading(true);
     await api.bookTariff({
       ...data,
       tariffIndex: tariffSelected,
       mentorId: id,
     });
+    setLoading(false);
     setBookingOpened(false);
     toast.onTariffRequestSend();
   };
@@ -48,7 +51,7 @@ const Mentor = () => {
         }`}
         onClose={() => setBookingOpened(false)}
       >
-        <BookingForm onChange={onBooking} />
+        <BookingForm loading={loading} onChange={onBooking} />
       </Modal>
     </div>
   );

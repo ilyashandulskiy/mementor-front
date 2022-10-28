@@ -37,7 +37,7 @@ const authRoutes = [
   },
   {
     path: '*',
-    element: <Profile />,
+    element: <MentorsList />,
   },
 ];
 

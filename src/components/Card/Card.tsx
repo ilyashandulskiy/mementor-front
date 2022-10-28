@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './Card.module.css';
 import cn from 'classnames';
-import { Profile } from 'types';
 import useNavigation from 'hooks/useNavigation';
 import cashTool from 'tools/cashTool';
 import textTool from 'tools/textTool';
 import useMedia from 'hooks/useMedia';
+import * as swagger from 'swagger/swagger';
 
-type Props = Partial<Profile>;
+type Props = swagger.Mentor;
 
 const Card = ({
   name,
@@ -15,7 +15,6 @@ const Card = ({
   tariff,
   grade,
   programmingLanguage,
-  description,
   _id,
 }: Props) => {
   const navigation = useNavigation();
@@ -38,7 +37,9 @@ const Card = ({
               {programmingLanguageList}
             </span>
           </h5>
-          <p className="card-text">{textTool.limit(description || '', 150)}</p>
+          <p className="card-text">
+            {textTool.limit('description' || '', 150)}
+          </p>
         </div>
         {!isMobile && (
           <div className={styles.priceBlock}>

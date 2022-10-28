@@ -6,9 +6,10 @@ import { BookingFormResponse } from 'types';
 
 interface Props {
   onChange: (val: BookingFormResponse) => void;
+  loading: boolean;
 }
 
-const BookingForm = ({ onChange }: Props) => {
+const BookingForm = ({ onChange, loading }: Props) => {
   const {
     register,
     handleSubmit,
@@ -28,7 +29,12 @@ const BookingForm = ({ onChange }: Props) => {
         error={!!errors?.customerTelegram}
       />
 
-      <Button submit onClick={handleSubmit(onChange)} className={styles.button}>
+      <Button
+        loading={loading}
+        submit
+        onClick={handleSubmit(onChange)}
+        className={styles.button}
+      >
         Отправить заявку
       </Button>
     </Form>

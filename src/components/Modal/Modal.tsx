@@ -1,6 +1,7 @@
 import cn from 'classnames';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { useOnClickOutside } from 'hooks/useClickOutside';
 
 interface Props {
   opened: boolean;
@@ -16,6 +17,8 @@ interface Styles {
 }
 
 function Modal({ opened, children, title, onClose }: Props) {
+  const ref = useRef<any>();
+  useOnClickOutside(ref, onClose);
   const backdropStyles: Styles = {
     display: 'block',
     pointerEvents: opened ? 'all' : 'none',
@@ -28,7 +31,7 @@ function Modal({ opened, children, title, onClose }: Props) {
       className={cn(['modal', 'fade', { show: opened }])}
       style={backdropStyles}
     >
-      <div className="modal-dialog" style={styles}>
+      <div className="modal-dialog" style={styles} ref={ref}>
         <div className="modal-content" style={styles}>
           <div className="modal-header" style={styles}>
             <h5 className="modal-title">{title}</h5>

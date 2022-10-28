@@ -29,20 +29,18 @@ const Layout = ({ children }: Props) => {
           className={styles.logo}
           src={logoImage}
         />
-        {isAuthed() && (
-          <Button
-            outline
-            className={styles.profileButton}
-            onClick={navigation.goToProfile}
-          >
-            <img
-              src={profileImage}
-              alt="profile"
-              className={styles.profileIcon}
-            />
-            Профиль
-          </Button>
-        )}
+        <Button
+          outline
+          className={styles.profileButton}
+          onClick={isAuthed() ? navigation.goToProfile : navigation.goToLogin}
+        >
+          <img
+            src={profileImage}
+            alt="profile"
+            className={styles.profileIcon}
+          />
+          {isAuthed() ? 'Профиль' : 'Войти'}
+        </Button>
         {children}
       </div>
     </>

@@ -30,7 +30,7 @@ const useAuth = () => {
       queryClient.clear();
     },
     register: async (email: string, password: string) => {
-      const response = await api.register(email, password);
+      const response = await api.register({ email, password });
       if (response?.token)
         singIn({
           ...singInConfig,
