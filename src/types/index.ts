@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface Profile {
   name: string;
   surname: string;
@@ -32,3 +34,5 @@ export interface BookingFormResponse {
   customerName: string;
   customerTelegram: string;
 }
+
+export type FormSubmitProp = React.MouseEvent<HTMLButtonElement, MouseEvent>;

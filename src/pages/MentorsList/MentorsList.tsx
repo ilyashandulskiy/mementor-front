@@ -4,7 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useMentorsList } from 'hooks/useMentorsList';
 import { Profile } from 'types';
 import Card from 'components/Card';
-import Spinner from 'components/ui/Spinner';
+import { Spinner } from 'components/ui';
 
 const MentorsList = () => {
   const { data, fetchNextPage, getPages } = useMentorsList();

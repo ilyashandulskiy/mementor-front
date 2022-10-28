@@ -6,10 +6,8 @@ interface Props {
   color: 'accent' | 'white';
 }
 
-const Spinner = ({ size, color }: Props) => {
+export const Spinner = ({ size, color }: Props) => {
   return (
     <BeatLoader size={size} color={color === 'white' ? 'white' : '#81BC55'} />
   );
 };
-
-export default Spinner;

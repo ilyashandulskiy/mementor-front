@@ -1,15 +1,11 @@
 import React from 'react';
 import styles from '../../EditProfile.module.css';
-import Input from 'components/ui/Input';
-import Select from 'components/ui/Select';
+import { Button, Form, Input, Select, TextArea } from 'components/ui';
 import { yearOptions } from 'pages/EditProfile/helpers';
-import TextArea from 'components/ui/TextArea';
-import Button from 'components/ui/Button';
-import Form from 'components/ui/Form/Form';
 import useNavigation from 'hooks/useNavigation';
 import { useForm } from 'react-hook-form';
-import patterns from 'helpers/patterns';
-import { Profile } from 'types';
+import patterns from 'tools/patternsTool';
+import { FormSubmitProp, Profile } from 'types';
 import ControlledTags from 'components/form-ui/ControlledTags';
 import ControlledPrice from 'pages/EditProfile/components/ControlledPrice/ControlledPrice';
 
@@ -28,7 +24,7 @@ const ProfileForm = ({ loading, onChange, defaultValues }: Props) => {
     formState: { errors },
   } = useForm({ mode: 'onBlur', defaultValues });
 
-  const onSubmit = (e: any) => {
+  const onSubmit = (e: FormSubmitProp) => {
     e.preventDefault();
     handleSubmit(onChange)();
   };

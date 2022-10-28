@@ -1,19 +1,19 @@
 import React, { forwardRef, HTMLAttributes, ReactNode, Ref } from 'react';
 import styles from './Select.module.css';
-import id from 'helpers/id';
+import idTool from 'tools/idTool';
 
 interface Props extends HTMLAttributes<HTMLSelectElement> {
   label?: string;
   children: ReactNode | ReactNode[];
 }
 
-const Select = forwardRef(
+export const Select = forwardRef(
   ({ label, children, ...props }: Props, ref: Ref<HTMLSelectElement>) => {
     return (
       <div className={styles.container}>
         {label && <p className={styles.label}>{label}</p>}
         <select
-          id={id.generateInputId(label)}
+          id={idTool.generateInputId(label)}
           {...props}
           ref={ref}
           className="form-select"
@@ -24,5 +24,3 @@ const Select = forwardRef(
     );
   }
 );
-
-export default Select;

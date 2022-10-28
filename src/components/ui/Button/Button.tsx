@@ -1,20 +1,20 @@
 import React, { ReactNode } from 'react';
 import cn from 'classnames';
 import styles from './Button.module.css';
-import Spinner from 'components/ui/Spinner';
+import { Spinner } from 'components/ui';
 
 interface Props {
   children: ReactNode | ReactNode[];
   type?: 'primary' | 'secondary';
   outline?: boolean;
-  onClick?: (e: any) => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   disabled?: boolean;
   loading?: boolean;
   submit?: boolean;
 }
 
-const Button = ({
+export const Button = ({
   children,
   type,
   outline,
@@ -44,5 +44,3 @@ const Button = ({
     </button>
   );
 };
-
-export default Button;

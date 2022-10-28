@@ -1,5 +1,6 @@
 import useFetch from './useFetch';
 import { BookingRequest, Profile } from 'types';
+import * as swagger from 'swagger/swagger';
 
 interface AuthResponse {
   token: string;
@@ -9,7 +10,7 @@ const useApi = () => {
   const fetch = useFetch();
 
   return {
-    async login(email: string, password: string) {
+    async login({ email, password }: swagger.MementorBackAuth) {
       return await fetch.post<AuthResponse>('sign-in', { email, password });
     },
     async register(email: string, password: string) {

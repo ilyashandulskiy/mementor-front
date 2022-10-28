@@ -8,8 +8,8 @@ interface Props {
   tags?: string[];
 }
 
-const TextField = ({ label, text, tags }: Props) => {
-  const loading = text === undefined && !tags?.length;
+export const TextField = ({ label, text, tags }: Props) => {
+  const loading = !text && !tags?.length;
 
   return (
     <div className={styles.container}>
@@ -33,4 +33,3 @@ const TextField = ({ label, text, tags }: Props) => {
     </div>
   );
 };
-export default TextField;

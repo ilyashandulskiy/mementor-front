@@ -10,7 +10,7 @@ interface Props {
   onChange?: (val: number) => void;
 }
 
-const Date = ({ label, onChange }: Props) => {
+export const Date = ({ label, onChange }: Props) => {
   const [opened, setOpened] = useState(false);
   const [selected, setSelected] = useState(0);
 
@@ -37,5 +37,3 @@ const Date = ({ label, onChange }: Props) => {
     </>
   );
 };
-
-export default Date;

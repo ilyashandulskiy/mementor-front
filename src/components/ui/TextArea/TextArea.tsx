@@ -1,7 +1,7 @@
 import React, { forwardRef, HTMLAttributes, Ref } from 'react';
 import styles from './TextArea.module.css';
 import cn from 'classnames';
-import id from 'helpers/id';
+import idTool from 'tools/idTool';
 
 interface Props extends HTMLAttributes<HTMLTextAreaElement> {
   label?: string;
@@ -10,7 +10,7 @@ interface Props extends HTMLAttributes<HTMLTextAreaElement> {
   errorText?: string;
 }
 
-const TextArea = forwardRef(
+export const TextArea = forwardRef(
   (
     { label, placeholder, error, errorText, ...props }: Props,
     ref: Ref<HTMLTextAreaElement>
@@ -20,7 +20,7 @@ const TextArea = forwardRef(
         {label && <p className={styles.label}>{label}</p>}
         <textarea
           {...props}
-          id={id.generateInputId(label || placeholder)}
+          id={idTool.generateInputId(label || placeholder)}
           autoComplete="new-password"
           ref={ref}
           placeholder={placeholder}
@@ -39,5 +39,3 @@ const TextArea = forwardRef(
     );
   }
 );
-
-export default TextArea;

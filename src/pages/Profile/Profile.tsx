@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../EditProfile/EditProfile.module.css';
 import { useProfile } from 'hooks/useProfile';
 import ProfileInformation from 'components/ProfileInformation';
-import Button from 'components/ui/Button';
+import { Button } from 'components/ui';
 import useNavigation from 'hooks/useNavigation';
 import useAuth from 'hooks/useAuth';
 

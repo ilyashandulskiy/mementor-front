@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ProfileInformation.module.css';
-import TextField from 'components/ui/TextField';
+import { TextField } from 'components/ui';
 import { Profile } from 'types';
 import PriceBlock from 'components/PriceBlock';
 import useMedia from 'hooks/useMedia';

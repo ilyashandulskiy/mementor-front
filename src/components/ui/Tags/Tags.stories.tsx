@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'styles/index.css';
 
-import Tags from 'components/ui/Tags';
+import { Tags } from 'components/ui';
 
 export default {
   title: 'Tags',

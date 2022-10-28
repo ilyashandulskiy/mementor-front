@@ -1,7 +1,5 @@
 import React from 'react';
-import Form from 'components/ui/Form/Form';
-import Input from 'components/ui/Input';
-import Button from 'components/ui/Button';
+import { Button, Form, Input } from 'components/ui';
 import styles from './BookingForm.module.css';
 import { useForm } from 'react-hook-form';
 import { BookingFormResponse } from 'types';
@@ -15,11 +13,7 @@ const BookingForm = ({ onChange }: Props) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: 'onBlur' });
-
-  const onSubmit = (val: any) => {
-    onChange(val);
-  };
+  } = useForm({ mode: 'onBlur', defaultValues: {} as BookingFormResponse });
 
   return (
     <Form className={styles.container}>
@@ -34,7 +28,7 @@ const BookingForm = ({ onChange }: Props) => {
         error={!!errors?.customerTelegram}
       />
 
-      <Button submit onClick={handleSubmit(onSubmit)} className={styles.button}>
+      <Button submit onClick={handleSubmit(onChange)} className={styles.button}>
         Отправить заявку
       </Button>
     </Form>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Tags.module.css';
 import cn from 'classnames';
-import id from 'helpers/id';
+import idTool from 'tools/idTool';
 
 interface Props {
   label?: string;
@@ -13,7 +13,7 @@ interface Props {
   separator?: string;
 }
 
-const Tags = ({
+export const Tags = ({
   label,
   error,
   tags,
@@ -58,7 +58,7 @@ const Tags = ({
           </div>
         ))}
         <input
-          id={id.generateInputId(label)}
+          id={idTool.generateInputId(label)}
           placeholder={!tags.length ? placeholder : ''}
           value={text}
           onInput={(val) => setText(val.currentTarget.value)}
@@ -70,5 +70,3 @@ const Tags = ({
     </div>
   );
 };
-
-export default Tags;

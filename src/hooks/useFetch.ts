@@ -1,6 +1,6 @@
-import toast from 'react-hot-toast';
 import { useAuthHeader, useSignOut } from 'react-auth-kit';
 import axios from 'axios';
+import useToast from './useToast';
 
 const baseUrl: string = process.env.REACT_APP_BASE_URL || '';
 
@@ -16,6 +16,7 @@ interface AxiosError {
 const useFetch = () => {
   const signOut = useSignOut();
   const authHeader = useAuthHeader();
+  const toast = useToast();
 
   const instance = axios.create({
     headers: {
@@ -30,9 +31,9 @@ const useFetch = () => {
     },
   }: AxiosError) => {
     if (status === 401) return signOut();
-    if (status === 412) return toast.error('Такой пользователь не найден');
+    if (status === 412) return toast.onUserNotFound();
 
-    toast.error(`Ошибка сервера: ${message}`);
+    toast.onError(`Ошибка сервера: ${message}`);
   };
 
   return {
@@ -57,7 +58,7 @@ const useFetch = () => {
         const { data } = await instance.put<T>(baseUrl + url, body);
         return data;
       } catch (err) {
-        handleError(err as AxiosError);
+        if (err instanceof axios.AxiosError) handleError(err as AxiosError);
       }
     },
   };

@@ -1,14 +1,13 @@
 import React from 'react';
 import styles from '../../Login.module.css';
-import Input from 'components/ui/Input';
-import Button from 'components/ui/Button';
-import Form from 'components/ui/Form/Form';
+import { Button, Form, Input } from 'components/ui';
 import { useForm } from 'react-hook-form';
-import patterns from 'helpers/patterns';
+import patterns from 'tools/patternsTool';
 import useNavigation from 'hooks/useNavigation';
+import { LoginResponse } from 'pages/Login/Login';
 
 interface Props {
-  onSubmit: any;
+  onSubmit: ({ email, password }: LoginResponse) => void;
   isLoading: boolean;
 }
 
@@ -20,10 +19,11 @@ const LoginForm = ({ onSubmit, isLoading }: Props) => {
     formState: { errors },
   } = useForm({
     mode: 'onBlur',
+    defaultValues: {} as LoginResponse,
   });
 
   return (
-    <Form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <Form className={styles.form}>
       <div className={styles.fields}>
         <Input
           {...register('email', { required: true, pattern: patterns.email })}
@@ -40,7 +40,12 @@ const LoginForm = ({ onSubmit, isLoading }: Props) => {
         />
       </div>
       <div className={styles.buttons}>
-        <Button loading={isLoading} submit type="primary">
+        <Button
+          loading={isLoading}
+          submit
+          type="primary"
+          onClick={handleSubmit(onSubmit)}
+        >
           Войти в аккаунт
         </Button>
         <Button onClick={navigation.goToRegistration} outline type="primary">

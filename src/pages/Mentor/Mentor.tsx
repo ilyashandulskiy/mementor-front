@@ -8,11 +8,12 @@ import Modal from 'components/Modal';
 import { BookingFormResponse } from 'types';
 import BookingForm from './components/BookingForm';
 import useApi from 'hooks/useApi';
-import toast from 'react-hot-toast';
+import useToast from 'hooks/useToast';
 
 const Mentor = () => {
   const { id } = useParams();
   const api = useApi();
+  const toast = useToast();
   const [bookingOpened, setBookingOpened] = useState(false);
   const [tariffSelected, setTariffSelected] = useState(0);
   const navigation = useNavigation();
@@ -34,10 +35,7 @@ const Mentor = () => {
       mentorId: id,
     });
     setBookingOpened(false);
-    toast.success(
-      'Ваша заявка успешно отправлена! Ментор свяжется с вами в ближайшее время',
-      { duration: 10000 }
-    );
+    toast.onTariffRequestSend();
   };
 
   return (

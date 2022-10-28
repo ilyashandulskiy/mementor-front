@@ -4,7 +4,7 @@ import ProfileForm from './components/ProfileForm';
 import { Profile } from 'types';
 import useNavigation from 'hooks/useNavigation';
 import { useProfile } from 'hooks/useProfile';
-import constants from 'helpers/constants';
+import constants from 'tools/constants';
 
 const EditProfile = () => {
   const [saving, setSaving] = useState(false);

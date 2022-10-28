@@ -4,7 +4,7 @@ import RegisterForm from './components/RegisterForm';
 import useNavigation from 'hooks/useNavigation';
 import useAuth from 'hooks/useAuth';
 
-interface Response {
+export interface RegisterResponse {
   email: string;
   password: string;
 }
@@ -14,7 +14,7 @@ const Register = () => {
   const navigation = useNavigation();
   const { register } = useAuth();
 
-  const onRegister = async ({ email, password }: Response) => {
+  const onRegister = async ({ email, password }: RegisterResponse) => {
     setLoading(true);
     const success = await register(email, password);
     setLoading(false);

@@ -4,7 +4,7 @@ import backgroundImage from 'assets/images/background.jpg';
 import logoImage from 'assets/images/logo.png';
 import profileImage from 'assets/images/profile.png';
 import useNavigation from 'hooks/useNavigation';
-import Button from 'components/ui/Button';
+import { Button } from 'components/ui';
 import useAuth from 'hooks/useAuth';
 
 interface Props {

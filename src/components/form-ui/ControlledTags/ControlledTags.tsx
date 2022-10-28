@@ -1,5 +1,5 @@
 import React from 'react';
-import Tags from 'components/ui/Tags';
+import { Tags } from 'components/ui';
 import { Control, Controller } from 'react-hook-form';
 import { Profile } from 'types';
 

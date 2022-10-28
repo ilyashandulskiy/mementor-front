@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from 'components/ui/Button';
+import { Button } from 'components/ui';
 import styles from './PriceBlock.module.css';
 import cn from 'classnames';
-import cash from 'helpers/cash';
+import cashTool from 'tools/cashTool';
 
 interface Props {
   name: string;
@@ -27,7 +27,9 @@ const PriceBlock = ({
         <h4 className="my-2 font-weight-normal">{name}</h4>
       </div>
       <div className={cn(['card-body', styles.container])}>
-        <h2 className="card-title pricing-card-title">{cash.display(price)}</h2>
+        <h2 className="card-title pricing-card-title">
+          {cashTool.display(price)}
+        </h2>
         <p>{description}</p>
         <Button onClick={onClick} type="primary" disabled={disableActions}>
           {buttonText}

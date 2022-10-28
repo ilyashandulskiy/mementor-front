@@ -1,7 +1,6 @@
 import { useIsAuthenticated, useSignIn, useSignOut } from 'react-auth-kit';
 import useApi from './useApi';
 import queryClient from 'services/queryClient';
-import { Profile } from 'types';
 
 const singInConfig = {
   expiresIn: 100000,
@@ -17,7 +16,7 @@ const useAuth = () => {
   return {
     isAuthed,
     login: async (email: string, password: string) => {
-      const response = await api.login(email, password);
+      const response = await api.login({ email, password });
       if (response?.token)
         singIn({
           ...singInConfig,
@@ -28,7 +27,7 @@ const useAuth = () => {
     },
     logout: () => {
       singOut();
-      queryClient.setQueryData<Profile>('profile', {} as Profile);
+      queryClient.clear();
     },
     register: async (email: string, password: string) => {
       const response = await api.register(email, password);

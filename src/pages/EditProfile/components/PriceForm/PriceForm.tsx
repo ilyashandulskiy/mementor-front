@@ -1,12 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import styles from '../../EditProfile.module.css';
-import Input from 'components/ui/Input';
-import Form from 'components/ui/Form/Form';
-import Button from 'components/ui/Button';
-import TextArea from 'components/ui/TextArea';
+import { Button, Form, Input, TextArea } from 'components/ui';
 import { CurrentTariffEditing } from 'pages/EditProfile/components/ControlledPrice/components/PriceField/PriceField';
-import validate from 'helpers/validate';
+import validateTool from 'tools/validateTool';
+import { FormSubmitProp } from 'types';
 
 interface Props {
   defaultValues: CurrentTariffEditing;
@@ -21,7 +19,7 @@ const PriceForm = ({ onChange, defaultValues, onClose }: Props) => {
     formState: { errors },
   } = useForm({ mode: 'onBlur', defaultValues });
 
-  const onSubmit = (e: any) => {
+  const onSubmit = (e: FormSubmitProp) => {
     e.preventDefault();
     handleSubmit(onChange)();
   };
@@ -39,7 +37,7 @@ const PriceForm = ({ onChange, defaultValues, onClose }: Props) => {
             {...register('price', {
               required: true,
               valueAsNumber: true,
-              validate: validate.isPositiveNumber,
+              validate: validateTool.isPositiveNumber,
             })}
             error={!!errors?.price}
             label="Цена"

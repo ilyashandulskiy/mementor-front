@@ -16,8 +16,7 @@ const ControlledPrice = ({ control, rules }: Props) => {
       name={'tariff'}
       rules={rules}
       render={({ field: { value, onChange } }) => (
-        // @ts-ignore
-        <PriceField value={value} setValue={onChange} />
+        <PriceField value={value || []} setValue={onChange} />
       )}
     />
   );

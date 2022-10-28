@@ -1,7 +1,7 @@
 import React, { forwardRef, HTMLAttributes, Ref } from 'react';
 import styles from './Input.module.css';
 import cn from 'classnames';
-import id from 'helpers/id';
+import idTool from 'tools/idTool';
 
 interface Props extends HTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -11,7 +11,7 @@ interface Props extends HTMLAttributes<HTMLInputElement> {
   errorText?: string;
 }
 
-const Input = forwardRef(
+export const Input = forwardRef(
   (
     { label, placeholder, error, errorText, password, ...props }: Props,
     ref: Ref<HTMLInputElement>
@@ -21,7 +21,7 @@ const Input = forwardRef(
         {label && <p className={styles.label}>{label}</p>}
         <input
           {...props}
-          id={id.generateInputId(label || placeholder)}
+          id={idTool.generateInputId(label || placeholder)}
           autoComplete="new-password"
           type={password ? 'password' : 'text'}
           ref={ref}
@@ -41,5 +41,3 @@ const Input = forwardRef(
     );
   }
 );
-
-export default Input;

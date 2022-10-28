@@ -25,6 +25,7 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.5",
+    "swagger-typescript-api": "^11.1.1",
     "typescript": "*",
     "web-vitals": "^2.1.0"
   },
@@ -37,7 +38,8 @@
     "sb": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "cypress": "npx cypress open",
-    "cypress:commit": "npx cypress run"
+    "cypress:commit": "npx cypress run",
+    "swagger": "node update-swagger && npx swagger-typescript-api -p src/swagger/swagger.json -o ./src/swagger -n swagger.ts"
   },
   "eslintConfig": {
     "extends": [

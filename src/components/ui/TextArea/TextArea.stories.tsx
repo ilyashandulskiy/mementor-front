@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'styles/index.css';
 
-import TextArea from 'components/ui/TextArea';
+import { TextArea } from 'components/ui';
 
 export default {
   title: 'TextArea',

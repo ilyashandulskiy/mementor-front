@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'styles/index.css';
 
-import Input from 'components/ui/Input';
+import { Input } from 'components/ui';
 
 export default {
   title: 'Input',

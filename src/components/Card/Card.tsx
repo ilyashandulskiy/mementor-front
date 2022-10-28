@@ -3,8 +3,8 @@ import styles from './Card.module.css';
 import cn from 'classnames';
 import { Profile } from 'types';
 import useNavigation from 'hooks/useNavigation';
-import cash from 'helpers/cash';
-import text from 'helpers/text';
+import cashTool from 'tools/cashTool';
+import textTool from 'tools/textTool';
 import useMedia from 'hooks/useMedia';
 
 type Props = Partial<Profile>;
@@ -38,12 +38,12 @@ const Card = ({
               {programmingLanguageList}
             </span>
           </h5>
-          <p className="card-text">{text.limit(description || '', 150)}</p>
+          <p className="card-text">{textTool.limit(description || '', 150)}</p>
         </div>
         {!isMobile && (
           <div className={styles.priceBlock}>
             {tariff?.map(({ price }) => (
-              <h6>{cash.display(price)}</h6>
+              <h6>{cashTool.display(price)}</h6>
             ))}
           </div>
         )}

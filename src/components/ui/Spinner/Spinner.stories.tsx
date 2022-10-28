@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'styles/index.css';
 
-import Spinner from 'components/ui/Spinner';
+import { Spinner } from 'components/ui';
 
 export default {
   title: 'Spinner',

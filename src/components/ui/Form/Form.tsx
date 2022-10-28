@@ -5,12 +5,10 @@ interface Props extends React.FormHTMLAttributes<HTMLFormElement> {
   formId?: string;
 }
 
-function Form({ children, formId, ...props }: Props) {
+export function Form({ children, formId, ...props }: Props) {
   return (
     <form key={formId} noValidate {...props}>
       {children}
     </form>
   );
 }
-
-export default Form;
