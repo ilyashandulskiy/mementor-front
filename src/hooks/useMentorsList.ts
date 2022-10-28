@@ -6,7 +6,7 @@ export const useMentorsList = () => {
   return {
     ...useInfiniteQuery(
       ['mentors'],
-      async ({ pageParam = 1 }) => api.getMentorsList(pageParam),
+      async ({ pageParam = 0 }) => api.getMentorsList(pageParam),
       {
         getNextPageParam: (lastPage, allPages) => {
           return allPages.length + 1;

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from './MentorsList.module.css';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useMentorsList } from 'hooks/useMentorsList';
@@ -9,7 +9,9 @@ import * as swagger from 'swagger/swagger';
 const MentorsList = () => {
   const { data, fetchNextPage, getPages } = useMentorsList();
   const [pages, setPages] = useState(1);
-  getPages.then(setPages);
+  useEffect(() => {
+    getPages.then(setPages);
+  }, []);
 
   const mentors: swagger.Mentor[] = useMemo(
     () => data?.pages.flat() || ([] as swagger.Mentor[]),
