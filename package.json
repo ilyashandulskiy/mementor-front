@@ -32,14 +32,20 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test:dev": "react-scripts test && npx cypress run",
+    "test:dev": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "npx eslint --fix .",
     "sb": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "cypress": "npx cypress open",
-    "cypress:commit": "npx cypress run",
+    "cypress:commit": "yarn start && npx cypress run",
     "swagger": "node update-swagger && npx swagger-typescript-api -p src/swagger/swagger.json -o ./src/swagger -n swagger.ts"
+  },
+  "husky": {
+    "hooks" : {
+      "pre-commit": "npm run test:dev",
+      "pre-push": "npm run cypress:commit"
+    }
   },
   "eslintConfig": {
     "extends": [
