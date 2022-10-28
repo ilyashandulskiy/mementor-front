@@ -1,0 +1,818 @@
+{
+    "schemes": [],
+    "swagger": "2.0",
+    "info": {
+        "description": "Best backend ever.",
+        "title": "Mementor back",
+        "contact": {
+            "name": "@withoutasecondthought",
+            "email": "mrmarkeld@gmail.com"
+        },
+        "version": "1.0"
+    },
+    "host": "api.ilyaprojects.com",
+    "basePath": "/mementor",
+    "paths": {
+        "/book": {
+            "post": {
+                "description": "book mentor of your dream",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "booking"
+                ],
+                "summary": "New Booking",
+                "parameters": [
+                    {
+                        "description": "params",
+                        "name": "params",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PostBookingRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/mentor": {
+            "get": {
+                "description": "get your page",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "mentor"
+                ],
+                "summary": "Show your Page",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/GetMentorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Send full mentor info to update your profile",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "mentor"
+                ],
+                "summary": "change mentor",
+                "parameters": [
+                    {
+                        "description": "Account info",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PutMentorRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "remove mentor from bd",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "mentor"
+                ],
+                "summary": "Delete mentor",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/mentor/{id}": {
+            "get": {
+                "description": "Give you mentor without personal fields",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "mentor"
+                ],
+                "summary": "Show a mentor",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Account ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/GetMentorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "error occured",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/mentor/{page}": {
+            "post": {
+                "description": "get mentors",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "mentor"
+                ],
+                "summary": "return List of Mentors",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "number of page",
+                        "name": "page",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "params",
+                        "name": "params",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/PostMentorRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PostMentorResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/sign-in": {
+            "post": {
+                "description": "sign in",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "sign in",
+                "operationId": "sign-in",
+                "parameters": [
+                    {
+                        "description": "Account data",
+                        "name": "userinfo",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PostAuthRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PostAuthResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/sign-up": {
+            "post": {
+                "description": "sign up",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "sign up",
+                "operationId": "sign-up",
+                "parameters": [
+                    {
+                        "description": "Account data",
+                        "name": "userinfo",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PostAuthRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PostAuthResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/BasicResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BasicResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "example": "some string here"
+                }
+            }
+        },
+        "GetMentorResponse": {
+            "type": "object",
+            "required": [
+                "experienceSince",
+                "grade",
+                "name",
+                "programmingLanguage",
+                "surname",
+                "tariff",
+                "technology"
+            ],
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "example": "634afbd6c7cc8190a74feb35"
+                },
+                "canHelpWith": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "Your mother",
+                        " Your sister"
+                    ]
+                },
+                "classesDone": {
+                    "type": "integer",
+                    "example": 21
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Im the best from the best"
+                },
+                "education": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/mementor_back.Education"
+                    }
+                },
+                "email": {
+                    "type": "string",
+                    "example": "mrmarkeld@gmail.com"
+                },
+                "experienceSince": {
+                    "type": "integer",
+                    "example": 2019
+                },
+                "grade": {
+                    "type": "string",
+                    "example": "junior"
+                },
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "ru",
+                        " en"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Test"
+                },
+                "programmingLanguage": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "cpp",
+                        " go",
+                        " scala"
+                    ]
+                },
+                "surname": {
+                    "type": "string",
+                    "example": "Subject"
+                },
+                "tariff": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/mementor_back.Tariff"
+                    }
+                },
+                "technology": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "cpp",
+                        " go",
+                        "scala"
+                    ]
+                },
+                "validProfile": {
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "PostAuthRequest": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "mrmarkeld@gmail.com"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 6,
+                    "example": "123456"
+                }
+            }
+        },
+        "PostAuthResponse": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "example": "Bearer token"
+                }
+            }
+        },
+        "PostBookingRequest": {
+            "type": "object",
+            "required": [
+                "customerName",
+                "customerTelegram",
+                "mentorId",
+                "tariffIndex"
+            ],
+            "properties": {
+                "customerName": {
+                    "type": "string"
+                },
+                "customerTelegram": {
+                    "type": "string"
+                },
+                "mentorId": {
+                    "type": "string"
+                },
+                "tariffIndex": {
+                    "type": "integer",
+                    "maximum": 2,
+                    "minimum": 0
+                }
+            }
+        },
+        "PostMentorRequest": {
+            "type": "object",
+            "required": [
+                "experienceSince",
+                "grade",
+                "name",
+                "programmingLanguage",
+                "surname",
+                "tariff",
+                "technology"
+            ],
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "example": "634afbd6c7cc8190a74feb35"
+                },
+                "canHelpWith": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "Your mother",
+                        " Your sister"
+                    ]
+                },
+                "classesDone": {
+                    "type": "integer",
+                    "example": 21
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Im the best from the best"
+                },
+                "education": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/mementor_back.Education"
+                    }
+                },
+                "email": {
+                    "type": "string",
+                    "example": "mrmarkeld@gmail.com"
+                },
+                "experienceSince": {
+                    "type": "integer",
+                    "example": 2019
+                },
+                "grade": {
+                    "type": "string",
+                    "example": "junior"
+                },
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "ru",
+                        " en"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Test"
+                },
+                "programmingLanguage": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "cpp",
+                        " go",
+                        " scala"
+                    ]
+                },
+                "surname": {
+                    "type": "string",
+                    "example": "Subject"
+                },
+                "tariff": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/mementor_back.Tariff"
+                    }
+                },
+                "technology": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "cpp",
+                        " go",
+                        "scala"
+                    ]
+                },
+                "validProfile": {
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "PostMentorResponse": {
+            "type": "object",
+            "properties": {
+                "mentors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/mementor_back.Mentor"
+                    }
+                },
+                "pages": {
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
+        "PutMentorRequest": {
+            "type": "object",
+            "required": [
+                "experienceSince",
+                "grade",
+                "name",
+                "programmingLanguage",
+                "surname",
+                "tariff",
+                "technology"
+            ],
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "example": "634afbd6c7cc8190a74feb35"
+                },
+                "canHelpWith": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "Your mother",
+                        " Your sister"
+                    ]
+                },
+                "classesDone": {
+                    "type": "integer",
+                    "example": 21
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Im the best from the best"
+                },
+                "education": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/mementor_back.Education"
+                    }
+                },
+                "email": {
+                    "type": "string",
+                    "example": "mrmarkeld@gmail.com"
+                },
+                "experienceSince": {
+                    "type": "integer",
+                    "example": 2019
+                },
+                "grade": {
+                    "type": "string",
+                    "example": "junior"
+                },
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "ru",
+                        " en"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Test"
+                },
+                "programmingLanguage": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "cpp",
+                        " go",
+                        " scala"
+                    ]
+                },
+                "surname": {
+                    "type": "string",
+                    "example": "Subject"
+                },
+                "tariff": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/mementor_back.Tariff"
+                    }
+                },
+                "technology": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "cpp",
+                        " go",
+                        "scala"
+                    ]
+                },
+                "validProfile": {
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "mementor_back.Education": {
+            "type": "object",
+            "required": [
+                "department",
+                "place"
+            ],
+            "properties": {
+                "department": {
+                    "type": "string",
+                    "example": "computer science"
+                },
+                "place": {
+                    "type": "string",
+                    "example": "MGU"
+                }
+            }
+        },
+        "mementor_back.Mentor": {
+            "type": "object",
+            "required": [
+                "grade",
+                "name",
+                "programmingLanguage",
+                "surname",
+                "tariff"
+            ],
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "example": "634afbd6c7cc8190a74feb35"
+                },
+                "grade": {
+                    "type": "string",
+                    "example": "junior"
+                },
+                "language": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "russian",
+                        " english"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Test"
+                },
+                "programmingLanguage": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "python",
+                        "js",
+                        "trash"
+                    ]
+                },
+                "surname": {
+                    "type": "string",
+                    "example": "Subject"
+                },
+                "tariff": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/mementor_back.Tariff"
+                    }
+                }
+            }
+        },
+        "mementor_back.Tariff": {
+            "type": "object",
+            "required": [
+                "description",
+                "name",
+                "price"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "example": "Free for you my little friend"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "big boby"
+                },
+                "price": {
+                    "type": "integer",
+                    "example": 2000
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAUth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
