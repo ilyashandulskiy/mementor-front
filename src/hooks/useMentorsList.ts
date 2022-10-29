@@ -11,6 +11,9 @@ export const useMentorsList = () => {
         getNextPageParam: (lastPage, allPages) => {
           return allPages.length + 1;
         },
+        refetchOnReconnect: false,
+        refetchOnWindowFocus: false,
+        refetchInterval: false,
       }
     ),
     getPages: api.getMentorsListPageCount(),
