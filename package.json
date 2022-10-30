@@ -9,7 +9,6 @@
     "classnames": "^2.3.2",
     "currency.js": "^2.0.4",
     "cypress": "^10.11.0",
-    "eslint-plugin-absolute-imports-only": "^1.0.1",
     "framer-motion": "^7.5.3",
     "react": "^18.2.0",
     "react-auth-kit": "^2.4.0",
@@ -25,8 +24,6 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.5",
-    "swagger-typescript-api": "^11.1.1",
-    "typescript": "*",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
@@ -38,11 +35,12 @@
     "sb": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "cypress": "npx cypress open",
-    "cypress:commit": "yarn start && npx cypress run",
-    "swagger": "node update-swagger && npx swagger-typescript-api -p src/swagger/swagger.json -o ./src/swagger -n swagger.ts"
+    "swagger": "node update-swagger && npx swagger-typescript-api -p src/swagger/swagger.json -o ./src/swagger -n swagger.ts",
+    "prepare": "husky install",
+    "scriptname": "cmd"
   },
   "husky": {
-    "hooks" : {
+    "hooks": {
       "pre-commit": "npm run test:dev",
       "pre-push": "npm run cypress:commit"
     }
@@ -107,6 +105,7 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint": "8.7.0",
     "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-absolute-imports-only": "^1.0.1",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.28.0",
@@ -115,6 +114,8 @@
     "prop-types": "^15.8.1",
     "stylelint": "^14.13.0",
     "stylelint-config-standard": "^28.0.0",
+    "swagger-typescript-api": "^11.1.1",
+    "typescript": "*",
     "webpack": "^5.74.0"
   }
 }

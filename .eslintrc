@@ -23,7 +23,7 @@
     "react/display-name": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "react/jsx-key": "error"
+    "react/jsx-key": "off"
   },
   "env": {
     "node": true,
