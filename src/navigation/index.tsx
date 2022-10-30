@@ -14,9 +14,10 @@ const Navigation = () => {
       <Routes>
         {routes.map((route) => (
           <Route
+            key={route.path}
             path={route.path}
             element={
-              <ContentBlock key={route.path}>{route.element}</ContentBlock>
+              <ContentBlock keyProp={route.path}>{route.element}</ContentBlock>
             }
           />
         ))}

@@ -44,8 +44,8 @@ const MentorsList = () => {
       >
         {!!mentors?.length &&
           mentors.flat().map((mentor: swagger.Mentor) => (
-            <FadeIn>
-              <Card key={mentor?._id} {...mentor} />
+            <FadeIn key={mentor?._id}>
+              <Card {...mentor} />
             </FadeIn>
           ))}
       </InfiniteScroll>

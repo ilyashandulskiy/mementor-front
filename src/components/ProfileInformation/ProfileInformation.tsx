@@ -56,6 +56,7 @@ const ProfileInformation = ({
         >
           {data?.tariff?.map((tariff, index) => (
             <PriceBlock
+              key={`${tariff.name}${index}`}
               disableActions={isProfileOfCurrentUser}
               buttonText="Взять"
               price={tariff.price}

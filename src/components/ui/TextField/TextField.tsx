@@ -24,8 +24,10 @@ export const TextField = ({ label, text, tags }: Props) => {
         {text && <h5>{text}</h5>}
         {tags && (
           <div className={styles.tags}>
-            {tags.map((tag) => (
-              <div className={styles.tag}>{tag}</div>
+            {tags.map((tag, index) => (
+              <div key={`${tag}${index}`} className={styles.tag}>
+                {tag}
+              </div>
             ))}
           </div>
         )}

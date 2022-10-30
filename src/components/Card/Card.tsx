@@ -43,8 +43,8 @@ const Card = ({
         </div>
         {!isMobile && (
           <div className={styles.priceBlock}>
-            {tariff?.map(({ price }) => (
-              <h6>{cashTool.display(price)}</h6>
+            {tariff?.map(({ price, name }, index) => (
+              <h6 key={`${name}${index}`}>{cashTool.display(price)}</h6>
             ))}
           </div>
         )}

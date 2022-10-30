@@ -6,16 +6,16 @@ import cn from 'classnames';
 
 interface Props {
   children: ReactNode | ReactNode[];
-  key: string;
+  keyProp: string;
 }
 
-const ContentBlock = ({ children, key }: Props) => {
+const ContentBlock = ({ children, keyProp }: Props) => {
   const { isMobile } = useMedia();
 
   return (
     <motion.div
       transition={{ ease: 'easeOut', duration: 0.3 }}
-      key={key}
+      key={keyProp}
       initial={{ translateX: -40, opacity: 0 }}
       animate={{ translateX: 0, opacity: 1 }}
       exit={{ translateX: 40, opacity: 0 }}
