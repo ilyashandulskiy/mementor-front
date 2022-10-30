@@ -17,15 +17,12 @@ export interface MentorsListFilters {
 
 const MentorsList = () => {
   const { data, fetchNextPage, getPages } = useMentorsList();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [filters, setFilters] = useState<MentorsListFilters>({});
   const [pages, setPages] = useState(1);
   useEffect(() => {
     getPages.then(setPages);
   }, []);
-
-  useEffect(() => {
-    console.log('filters', filters);
-  }, [filters]);
 
   const mentors: swagger.Mentor[] = useMemo(
     () => data?.pages.flat() || ([] as swagger.Mentor[]),
