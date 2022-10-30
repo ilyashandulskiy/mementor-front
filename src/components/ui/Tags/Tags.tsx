@@ -53,7 +53,7 @@ export const Tags = ({
       {label && <p className={styles.label}>{label}</p>}
       <div className={cn(['form-control', styles.wrapper])}>
         {tags.map((tag, index) => (
-          <div onClick={() => onDelete(index)} className={styles.tag}>
+          <div key={tag} onClick={() => onDelete(index)} className={styles.tag}>
             {tag}
           </div>
         ))}

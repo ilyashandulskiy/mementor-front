@@ -42,6 +42,7 @@ const PriceField = ({ value, setValue }: Props) => {
       >
         {value?.map((tariff, index) => (
           <PriceBlock
+            key={`${tariff.name}${index}`}
             buttonText="Изменить"
             onClick={() => {
               setPriceModalOpened(true);
