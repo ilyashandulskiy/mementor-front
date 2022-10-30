@@ -5,13 +5,27 @@ import { useMentorsList } from 'hooks/useMentorsList';
 import Card from 'components/Card';
 import FadeIn from 'components/FadeIn';
 import * as swagger from 'swagger/swagger';
+import Filters from './components/Filters';
+
+export interface MentorsListFilters {
+  search?: string;
+  grade?: ('junior' | 'middle' | 'senior')[];
+  experienceSince?: number;
+  minPrice?: number;
+  maxPrice?: number;
+}
 
 const MentorsList = () => {
   const { data, fetchNextPage, getPages } = useMentorsList();
+  const [filters, setFilters] = useState<MentorsListFilters>({});
   const [pages, setPages] = useState(1);
   useEffect(() => {
     getPages.then(setPages);
   }, []);
+
+  useEffect(() => {
+    console.log('filters', filters);
+  }, [filters]);
 
   const mentors: swagger.Mentor[] = useMemo(
     () => data?.pages.flat() || ([] as swagger.Mentor[]),
@@ -20,7 +34,7 @@ const MentorsList = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.header}>Менторы на платформе</h2>
+      <Filters onChange={setFilters} />
       <InfiniteScroll
         next={fetchNextPage}
         hasMore={pages - 1 > (data?.pages.length || 1)}
