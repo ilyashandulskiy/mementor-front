@@ -29,13 +29,13 @@ const Filters = ({ onChange }: Props) => {
           placeholder="Поиск"
           className={styles.search}
         />
-        <Button outline onClick={() => setOpenedFilters((prev) => !prev)}>
-          Фильтры
-        </Button>
         <Button submit onClick={handleSubmit(onFormChange)}>
           Искать
         </Button>
       </div>
+      <Button outline onClick={() => setOpenedFilters((prev) => !prev)}>
+        Фильтры
+      </Button>
       <Spoiler opened={openedFilters} height={150} className={styles.filters}>
         <div className={styles.row}>
           <Select
