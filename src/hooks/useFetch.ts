@@ -31,9 +31,11 @@ const useFetch = () => {
     },
   }: AxiosError) => {
     if (status === 401) return signOut();
-    if (status === 412) return toast.onUserNotFound();
+    if (message === 'invalid login or password') return toast.onUserNotFound();
+    if (message === 'you have already creates account')
+      return toast.onUserExists();
 
-    toast.onError(`Ошибка сервера: ${message}`);
+    return toast.onError(`Ошибка сервера: ${message}`);
   };
 
   return {

@@ -13,6 +13,9 @@ const useToast = () => ({
   onUserNotFound() {
     toast.error('Такой пользователь не найден');
   },
+  onUserExists() {
+    toast.error('Пользователь с таким адресом почты уже зарегистрирован');
+  },
 });
 
 export default useToast;

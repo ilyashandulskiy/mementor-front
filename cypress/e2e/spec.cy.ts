@@ -106,4 +106,16 @@ describe('user authentication', () => {
     cy.contains('Изменить информацию в профиле');
     checkProfileValidity();
   });
+
+  it('should not login in deleted account', () => {
+    cy.contains('Изменить информацию').click();
+    cy.contains('Удалить аккаунт').click();
+    cy.contains('Удалить навсегда').click();
+    cy.contains('ВХОД В АККАУНТ');
+    cy.get('#Email').click().type(email);
+    cy.get('#Пароль').click().type('password');
+    cy.contains('Войти в аккаунт').click();
+    cy.contains('Изменить информацию в профиле').should('not.exist');
+    cy.contains('Такой пользователь не найден');
+  });
 });
