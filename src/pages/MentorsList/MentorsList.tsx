@@ -17,7 +17,7 @@ export interface MentorsListFilters {
 
 const MentorsList = () => {
   const [filters, setFilters] = useState<MentorsListFilters>({});
-  const { data, fetchNextPage, getPages } = useMentorsList(filters);
+  const { data, fetchNextPage, getPages, isFetching } = useMentorsList(filters);
   const [pages, setPages] = useState(1);
   useEffect(() => {
     getPages.then(setPages);
@@ -31,20 +31,24 @@ const MentorsList = () => {
   return (
     <div className={styles.container}>
       <Filters onChange={setFilters} />
-      <InfiniteScroll
-        next={fetchNextPage}
-        hasMore={pages - 1 > (data?.pages.length || 1)}
-        className={styles.list}
-        loader={null}
-        dataLength={mentors.length || 0}
-      >
-        {!!mentors?.length &&
-          mentors.flat().map((mentor: swagger.Mentor) => (
-            <FadeIn key={mentor?._id}>
-              <Card {...mentor} />
-            </FadeIn>
-          ))}
-      </InfiniteScroll>
+      {mentors[0] || isFetching ? (
+        <InfiniteScroll
+          next={fetchNextPage}
+          hasMore={pages - 1 > (data?.pages.length || 1)}
+          className={styles.list}
+          loader={null}
+          dataLength={mentors.length || 0}
+        >
+          {!!mentors?.length &&
+            mentors.flat().map((mentor: swagger.Mentor) => (
+              <FadeIn key={mentor?._id}>
+                <Card {...mentor} />
+              </FadeIn>
+            ))}
+        </InfiniteScroll>
+      ) : (
+        <h6>По вашим фильтрам ничего не найдено :(</h6>
+      )}
     </div>
   );
 };
