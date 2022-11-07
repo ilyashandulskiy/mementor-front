@@ -20,6 +20,13 @@ body {
   --bs-btn-hover-border-color: transparent !important;
 }
 
+.btn-danger {
+  outline: none !important;
+  border: none !important;
+  color: red !important;
+  opacity: 0.8 !important;
+}
+
 .form-control:focus, .form-select:focus {
   border-color: #81BC55 !important;
   box-shadow: 0 1px 1px transparent inset, 0 0 8px #81BC55 !important;

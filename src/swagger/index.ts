@@ -10,71 +10,45 @@
  */
 
 export interface BasicResponse {
-  /** @example "some string here" */
   message?: string;
 }
 
 export interface Education {
-  /** @example "computer science" */
   department: string;
-  /** @example "MGU" */
   place: string;
 }
 
 export interface GetMentorResponse {
-  /** @example "634afbd6c7cc8190a74feb35" */
   _id?: string;
-  /** @example ["Your mother"," Your sister"] */
   canHelpWith?: string[];
-  /** @example 21 */
   classesDone?: number;
-  /** @example "Im the best from the best" */
   description?: string;
   education?: Education[];
-  /** @example "mrmarkeld@gmail.com" */
   email: string;
-  /** @example 2019 */
   experienceSince: number;
-  /** @example "junior" */
   grade: 'junior' | 'middle' | 'senior';
-  /** @example ["ru"," en"] */
   language?: string[];
-  /** @example "Test" */
   name: string;
-  /** @example ["cpp"," go"," scala"] */
   programmingLanguage: string[];
-  /** @example "Subject" */
   surname: string;
   tariff: Tariff[];
-  /** @example ["cpp"," go","scala"] */
   technology: string[];
-  /** @example true */
   validProfile?: boolean;
 }
 
 export interface Mentor {
-  /** @example "634afbd6c7cc8190a74feb35" */
   _id?: string;
-  /** @example "junior" */
   grade: 'junior' | 'middle' | 'senior';
-  /** @example ["russian"," english"] */
   language?: string[];
-  /** @example "Test" */
   name: string;
-  /** @example ["python","js","trash"] */
   programmingLanguage: string[];
-  /** @example "Subject" */
   surname: string;
   tariff: Tariff[];
 }
 
 export interface PostAuthRequest {
-  /** @example "mrmarkeld@gmail.com" */
   email: string;
-  /**
-   * @minLength 6
-   * @example "123456"
-   */
+  /** @minLength 6 */
   password: string;
 }
 
@@ -95,82 +69,40 @@ export interface PostBookingRequest {
 }
 
 export interface PostMentorRequest {
-  /** @example "634afbd6c7cc8190a74feb35" */
-  _id?: string;
-  /** @example ["Your mother"," Your sister"] */
-  canHelpWith?: string[];
-  /** @example 21 */
-  classesDone?: number;
-  /** @example "Im the best from the best" */
-  description?: string;
-  education?: Education[];
-  /** @example "mrmarkeld@gmail.com" */
-  email: string;
-  /** @example 2019 */
-  experienceSince: number;
-  /** @example "junior" */
-  grade: 'junior' | 'middle' | 'senior';
-  /** @example ["ru"," en"] */
-  language?: string[];
-  /** @example "Test" */
-  name: string;
-  /** @example ["cpp"," go"," scala"] */
-  programmingLanguage: string[];
-  /** @example "Subject" */
-  surname: string;
-  tariff: Tariff[];
-  /** @example ["cpp"," go","scala"] */
-  technology: string[];
-  /** @example true */
-  validProfile?: boolean;
+  experienceSince?: number;
+  grade?: string[];
+  maxPrice?: number;
+  minPrice?: number;
+  search?: string;
 }
 
 export interface PostMentorResponse {
   mentors: Mentor[];
-  /** @example 1 */
   pages: number;
 }
 
 export interface PutMentorRequest {
-  /** @example "634afbd6c7cc8190a74feb35" */
   _id?: string;
-  /** @example ["Your mother"," Your sister"] */
   canHelpWith?: string[];
-  /** @example 21 */
   classesDone?: number;
-  /** @example "Im the best from the best" */
   description?: string;
   education?: Education[];
-  /** @example "mrmarkeld@gmail.com" */
   email: string;
-  /** @example 2019 */
   experienceSince: number;
-  /** @example "junior" */
   grade: 'junior' | 'middle' | 'senior';
-  /** @example ["ru"," en"] */
   language?: string[];
-  /** @example "Test" */
   name: string;
-  /** @example ["cpp"," go"," scala"] */
   programmingLanguage: string[];
-  /** @example "Subject" */
   surname: string;
   tariff: Tariff[];
-  /** @example ["cpp"," go","scala"] */
   technology: string[];
-  /** @example true */
   validProfile?: boolean;
 }
 
 export interface Tariff {
-  /**
-   * @maxLength 255
-   * @example "Free for you my little friend"
-   */
+  /** @maxLength 255 */
   description: string;
-  /** @example "big boby" */
   name: string;
-  /** @example 2000 */
   price: number;
 }
 

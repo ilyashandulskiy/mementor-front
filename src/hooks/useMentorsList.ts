@@ -1,12 +1,13 @@
 import { useInfiniteQuery } from 'react-query';
 import useApi from './useApi';
+import * as swagger from 'swagger';
 
-export const useMentorsList = () => {
+export const useMentorsList = (filters: swagger.PostMentorRequest) => {
   const api = useApi();
   return {
     ...useInfiniteQuery(
-      ['mentors'],
-      async ({ pageParam = 0 }) => api.getMentorsList(pageParam),
+      ['mentors', filters],
+      async ({ pageParam = 0 }) => api.getMentorsList(pageParam, filters),
       {
         getNextPageParam: (lastPage, allPages) => {
           return allPages.length + 1;

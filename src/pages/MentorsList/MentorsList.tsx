@@ -4,7 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useMentorsList } from 'hooks/useMentorsList';
 import Card from 'components/Card';
 import FadeIn from 'components/FadeIn';
-import * as swagger from 'swagger/swagger';
+import * as swagger from 'swagger';
 import Filters from './components/Filters';
 
 export interface MentorsListFilters {
@@ -16,9 +16,8 @@ export interface MentorsListFilters {
 }
 
 const MentorsList = () => {
-  const { data, fetchNextPage, getPages } = useMentorsList();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [filters, setFilters] = useState<MentorsListFilters>({});
+  const { data, fetchNextPage, getPages } = useMentorsList(filters);
   const [pages, setPages] = useState(1);
   useEffect(() => {
     getPages.then(setPages);

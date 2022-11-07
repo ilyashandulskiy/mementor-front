@@ -5,7 +5,7 @@ import useNavigation from 'hooks/useNavigation';
 import cashTool from 'tools/cashTool';
 import textTool from 'tools/textTool';
 import useMedia from 'hooks/useMedia';
-import * as swagger from 'swagger/swagger';
+import * as swagger from 'swagger';
 
 type Props = swagger.Mentor;
 

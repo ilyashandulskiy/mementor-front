@@ -12,10 +12,11 @@ import ControlledPrice from 'pages/EditProfile/components/ControlledPrice/Contro
 interface Props {
   loading: boolean;
   onChange: (val: unknown) => void;
+  onDelete: (val: unknown) => void;
   defaultValues: Profile;
 }
 
-const ProfileForm = ({ loading, onChange, defaultValues }: Props) => {
+const ProfileForm = ({ loading, onChange, defaultValues, onDelete }: Props) => {
   const navigation = useNavigation();
   const {
     register,
@@ -115,6 +116,9 @@ const ProfileForm = ({ loading, onChange, defaultValues }: Props) => {
         </Button>
         <Button onClick={navigation.goToProfile} outline type="primary">
           Отменить изменения
+        </Button>
+        <Button onClick={onDelete} outline type="danger">
+          Удалить аккаунт
         </Button>
       </div>
     </Form>

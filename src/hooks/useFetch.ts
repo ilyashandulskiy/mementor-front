@@ -45,6 +45,14 @@ const useFetch = () => {
         if (err instanceof axios.AxiosError) handleError(err as AxiosError);
       }
     },
+    async delete<T>(url: string) {
+      try {
+        const { data } = await instance.delete<T>(baseUrl + url);
+        return data as T;
+      } catch (err) {
+        if (err instanceof axios.AxiosError) handleError(err as AxiosError);
+      }
+    },
     async post<T>(url: string, body: any) {
       try {
         const { data } = await instance.post<T>(baseUrl + url, body);

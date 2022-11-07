@@ -1,6 +1,6 @@
 import useFetch from './useFetch';
 import { BookingRequest, Profile } from 'types';
-import * as swagger from 'swagger/swagger';
+import * as swagger from 'swagger';
 
 const useApi = () => {
   const fetch = useFetch();
@@ -24,10 +24,10 @@ const useApi = () => {
     async getMentor(id: string) {
       return await fetch.get<swagger.GetMentorResponse>('mentor/' + id);
     },
-    async getMentorsList(page: number) {
+    async getMentorsList(page: number, data: swagger.PostMentorRequest) {
       const { mentors } = await fetch.post<swagger.PostMentorResponse>(
         'mentor/' + page,
-        {}
+        data
       );
       return mentors;
     },
@@ -40,6 +40,9 @@ const useApi = () => {
     },
     async saveProfile(data: Profile) {
       return await fetch.put<swagger.BasicResponse>('mentor', data);
+    },
+    async deleteProfile() {
+      return await fetch.delete<swagger.BasicResponse>('mentor');
     },
     async bookTariff(data: BookingRequest) {
       return await fetch.post<swagger.BasicResponse>('book', data);

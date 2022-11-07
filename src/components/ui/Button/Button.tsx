@@ -5,7 +5,7 @@ import { Spinner } from 'components/ui';
 
 interface Props {
   children: ReactNode | ReactNode[];
-  type?: 'primary' | 'secondary';
+  type?: 'primary' | 'secondary' | 'danger';
   outline?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;

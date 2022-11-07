@@ -30,3 +30,8 @@
     justify-content: stretch;
     margin-top: 20px;
 }
+
+.deleteModalContainer {
+    display: flex;
+    gap: 10px;
+}

@@ -9,6 +9,7 @@
     "classnames": "^2.3.2",
     "currency.js": "^2.0.4",
     "cypress": "^10.11.0",
+    "dotenv": "^16.0.3",
     "framer-motion": "^7.5.3",
     "react": "^18.2.0",
     "react-auth-kit": "^2.4.0",
@@ -35,7 +36,7 @@
     "sb": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "cypress": "npx cypress open",
-    "swagger": "node update-swagger && npx swagger-typescript-api -p src/swagger/swagger.json -o ./src/swagger -n swagger.ts",
+    "swagger": "node update-swagger && npx swagger-typescript-api -p src/swagger/swagger.json -o ./src/swagger -n index.ts",
     "prepare": "husky install",
     "scriptname": "cmd"
   },
