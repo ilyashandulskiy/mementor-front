@@ -7,14 +7,19 @@ import { useProfile } from 'hooks/useProfile';
 import constants from 'tools/constants';
 import Modal from 'components/Modal';
 import { Button } from 'components/ui';
+import { isTariffValid } from './helpers';
+import useToast from 'hooks/useToast';
 
 const EditProfile = () => {
   const [saving, setSaving] = useState(false);
+  const toast = useToast();
   const [deleting, setDeleting] = useState(false);
   const { save, data, deleteProfile } = useProfile();
   const navigation = useNavigation();
 
   const onSave = async (val: Profile) => {
+    if (!isTariffValid(val)) return toast.onTariffInvalid();
+
     setSaving(true);
     await save(val);
     setSaving(false);

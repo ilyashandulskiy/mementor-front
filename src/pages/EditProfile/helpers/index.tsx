@@ -1,4 +1,5 @@
 import React from 'react';
+import { Profile } from 'types';
 
 export const yearOptions = () => {
   const years = [];
@@ -11,4 +12,9 @@ export const yearOptions = () => {
       {year}
     </option>
   ));
+};
+
+export const isTariffValid = (profile: Profile) => {
+  const prices = profile.tariff?.map(({ price }) => price) || [];
+  return prices[0] <= prices[1] && prices[1] <= prices[2];
 };

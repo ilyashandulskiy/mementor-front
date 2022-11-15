@@ -97,7 +97,7 @@ const ProfileForm = ({ loading, onChange, defaultValues, onDelete }: Props) => {
           separator=","
           rules={{ required: true }}
           label="Готов помочь с"
-          placeholder="Вводите каждый пункт с новой строки"
+          placeholder="Вводите каждый пункт через запятую"
           name="canHelpWith"
         />
 
