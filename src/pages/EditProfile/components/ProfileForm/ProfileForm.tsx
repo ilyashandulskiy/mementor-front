@@ -8,6 +8,7 @@ import patterns from 'tools/patternsTool';
 import { FormSubmitProp, Profile } from 'types';
 import ControlledTags from 'components/form-ui/ControlledTags';
 import ControlledPrice from 'pages/EditProfile/components/ControlledPrice/ControlledPrice';
+import EditableProfileImage from 'pages/EditProfile/components/EditableProfileImage/EditableProfileImage';
 
 interface Props {
   loading: boolean;
@@ -32,6 +33,7 @@ const ProfileForm = ({ loading, onChange, defaultValues, onDelete }: Props) => {
 
   return (
     <Form formId="profile">
+      <EditableProfileImage />
       <div className={styles.fields}>
         <div className={styles.row}>
           <Input

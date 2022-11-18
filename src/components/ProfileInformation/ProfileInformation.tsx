@@ -5,6 +5,7 @@ import { Profile } from 'types';
 import PriceBlock from 'components/PriceBlock';
 import useMedia from 'hooks/useMedia';
 import cn from 'classnames';
+import ProfileImage from 'components/ProfileImage/ProfileImage';
 
 interface Props {
   data?: Profile;
@@ -21,10 +22,7 @@ const ProfileInformation = ({
 
   return (
     <>
-      <img
-        src="https://photo9.wambacdn.net/44/84/04/1749404844/1785668513_huge.jpg?hash=rS6IY83UPoUS4XEeN9MwRw&expires=64060578000&updated=1500977830"
-        className={styles.icon}
-      />
+      <ProfileImage src="https://photo9.wambacdn.net/44/84/04/1749404844/1785668513_huge.jpg?hash=rS6IY83UPoUS4XEeN9MwRw&expires=64060578000&updated=1500977830" />
       <div className={styles.fields}>
         <div className={cn([styles.row, { [styles.rowMobile]: isMobile }])}>
           <TextField label="Имя" text={data?.name} />

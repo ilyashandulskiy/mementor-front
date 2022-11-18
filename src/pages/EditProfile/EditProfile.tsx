@@ -38,7 +38,6 @@ const EditProfile = () => {
 
   return (
     <div className={styles.container}>
-      <h2>НАСТРОЙКА ПРОФИЛЯ</h2>
       <ProfileForm
         defaultValues={
           data.grade

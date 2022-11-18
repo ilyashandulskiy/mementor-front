@@ -1,0 +1,27 @@
+.container {
+    position: absolute;
+    translate: 0 -100px;
+    left: calc(50% - 100px);
+
+    background-color: lightgray;
+    border: 10px solid white;
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+}
+
+.image {
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    opacity: 1;
+    transition: 0.2s;
+}
+
+.imageEditable {
+    cursor: pointer;
+}
+
+.imageEditable:hover {
+    opacity: 0.8;
+}
