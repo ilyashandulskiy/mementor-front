@@ -103,7 +103,7 @@ const ProfileForm = ({ loading, onChange, defaultValues, onDelete }: Props) => {
 
         <TextArea
           label="Описание"
-          {...register('description', { required: false })}
+          {...register('description', { required: true })}
           error={!!errors?.description}
         />
       </div>

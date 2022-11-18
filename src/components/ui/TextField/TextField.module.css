@@ -73,6 +73,7 @@
     position: absolute;
     transition: 0.2s;
     opacity: 1;
+    pointer-events: none;
 }
 
 .hide {
