@@ -14,17 +14,18 @@ interface Props {
 
 const useUpload = ({ onChange }: Props) => ({
   chooseFile() {
-    // @ts-ignore
-    const fileChooser = document.getElementById('filechooser');
+    const fileChooser = document.getElementById(
+      'filechooser'
+    ) as HTMLInputElement;
 
     const onFileChange = async (val: any) => {
       const result = await toBase64(val.target.files[0]);
       onChange(result as string);
-      fileChooser!.removeEventListener('change', onFileChange);
+      fileChooser.removeEventListener('change', onFileChange);
     };
 
-    fileChooser!.click();
-    fileChooser!.addEventListener('change', onFileChange);
+    fileChooser.click();
+    fileChooser.addEventListener('change', onFileChange);
   },
 });
 

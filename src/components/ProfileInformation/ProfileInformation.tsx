@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './ProfileInformation.module.css';
 import { TextField } from 'components/ui';
-import { Profile } from 'types';
+import * as swagger from 'swagger';
 import PriceBlock from 'components/PriceBlock';
 import useMedia from 'hooks/useMedia';
 import cn from 'classnames';
 import ProfileImage from 'components/ProfileImage/ProfileImage';
 
 interface Props {
-  data?: Profile;
+  data?: swagger.GetMentorResponse;
   onTariffClick?: (val: number) => void;
   isProfileOfCurrentUser?: boolean;
 }
@@ -22,7 +22,7 @@ const ProfileInformation = ({
 
   return (
     <>
-      <ProfileImage src="https://photo9.wambacdn.net/44/84/04/1749404844/1785668513_huge.jpg?hash=rS6IY83UPoUS4XEeN9MwRw&expires=64060578000&updated=1500977830" />
+      <ProfileImage src={data?.image?.['512x512']} />
       <div className={styles.fields}>
         <div className={cn([styles.row, { [styles.rowMobile]: isMobile }])}>
           <TextField label="Имя" text={data?.name} />

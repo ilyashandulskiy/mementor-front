@@ -47,6 +47,7 @@ const EditProfile = () => {
                 tariff: constants.defaultTariffs,
               } as Profile)
         }
+        defaultImage={data?.image?.['512x512']}
         loading={saving}
         onChange={(val) => onSave(val as Profile)}
         onDelete={onDeleteModalOpened}

@@ -10,7 +10,7 @@ export const useMentorsList = (filters: swagger.PostMentorRequest) => {
       async ({ pageParam = 0 }) => api.getMentorsList(pageParam, filters),
       {
         getNextPageParam: (lastPage, allPages) => {
-          return allPages.length + 1;
+          return allPages.length;
         },
         refetchOnReconnect: false,
         refetchOnWindowFocus: false,

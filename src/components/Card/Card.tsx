@@ -6,6 +6,7 @@ import cashTool from 'tools/cashTool';
 import textTool from 'tools/textTool';
 import useMedia from 'hooks/useMedia';
 import * as swagger from 'swagger';
+import noPhoto from 'assets/images/no-photo.png';
 
 type Props = swagger.Mentor;
 
@@ -15,6 +16,7 @@ const Card = ({
   tariff,
   grade,
   programmingLanguage,
+  image,
   _id,
 }: Props) => {
   const navigation = useNavigation();
@@ -28,7 +30,11 @@ const Card = ({
       className={cn(['card', styles.card])}
     >
       <div className={cn(['card-body', styles.cardBody])}>
-        <div className={styles.icon} />
+        <img
+          alt="profile image"
+          src={image?.['144x144'] || noPhoto}
+          className={styles.icon}
+        />
         <div className={styles.badge}>{grade}</div>
         <div className={styles.cardInformation}>
           <h5 className="card-title">

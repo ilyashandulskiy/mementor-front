@@ -19,6 +19,7 @@ const MentorsList = () => {
   const [filters, setFilters] = useState<MentorsListFilters>({});
   const { data, fetchNextPage, getPages, isFetching } = useMentorsList(filters);
   const [pages, setPages] = useState(1);
+
   useEffect(() => {
     getPages.then(setPages);
   }, []);
@@ -34,7 +35,7 @@ const MentorsList = () => {
       {mentors[0] || isFetching ? (
         <InfiniteScroll
           next={fetchNextPage}
-          hasMore={pages - 1 > (data?.pages.length || 1)}
+          hasMore={pages > (data?.pages.length || 1)}
           className={styles.list}
           loader={null}
           dataLength={mentors.length || 0}

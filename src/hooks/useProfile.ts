@@ -17,5 +17,8 @@ export const useProfile = () => {
       await api.deleteProfile();
       auth.logout();
     },
+    uploadProfileImage: async (base64: string) => {
+      return await api.uploadProfileImage({ base64 });
+    },
   };
 };

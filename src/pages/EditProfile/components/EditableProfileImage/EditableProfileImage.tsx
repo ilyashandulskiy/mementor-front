@@ -1,19 +1,31 @@
 import React, { useState } from 'react';
 import ProfileImage from 'components/ProfileImage/ProfileImage';
 import useUpload from 'hooks/useUpload';
+import { useProfile } from 'hooks/useProfile';
 
-const EditableProfileImage = () => {
+interface Props {
+  defaultImage?: string;
+}
+
+const EditableProfileImage = ({ defaultImage }: Props) => {
   const [changedImage, setChangedImage] = useState('');
-  const { chooseFile } = useUpload({ onChange: setChangedImage });
+  const [loading, setLoading] = useState(false);
+  const { uploadProfileImage } = useProfile();
+
+  const onImageChange = async (base64: string) => {
+    setLoading(true);
+    const result = await uploadProfileImage(base64);
+    setLoading(false);
+    setChangedImage(result['512x512'] || '');
+  };
+  const { chooseFile } = useUpload({ onChange: onImageChange });
 
   return (
     <ProfileImage
       onClick={chooseFile}
       clickable
-      src={
-        changedImage ||
-        'https://photo9.wambacdn.net/44/84/04/1749404844/1785668513_huge.jpg?hash=rS6IY83UPoUS4XEeN9MwRw&expires=64060578000&updated=1500977830'
-      }
+      loading={loading}
+      src={changedImage || defaultImage}
     />
   );
 };

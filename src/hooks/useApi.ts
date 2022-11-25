@@ -47,6 +47,9 @@ const useApi = () => {
     async bookTariff(data: BookingRequest) {
       return await fetch.post<swagger.BasicResponse>('book', data);
     },
+    async uploadProfileImage(data: swagger.PostImageRequest) {
+      return await fetch.post<swagger.Image>('mentor/image', data);
+    },
   };
 };
 

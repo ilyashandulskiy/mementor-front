@@ -25,3 +25,13 @@
 .imageEditable:hover {
     opacity: 0.8;
 }
+
+.imageLoading {
+    opacity: 0.2 !important;
+}
+
+.spinner {
+    position: absolute;
+    left: 55px;
+    top: 75px;
+}

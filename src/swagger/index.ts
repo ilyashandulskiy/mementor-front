@@ -27,6 +27,7 @@ export interface GetMentorResponse {
   email: string;
   experienceSince: number;
   grade: 'junior' | 'middle' | 'senior';
+  image?: Image;
   language?: string[];
   name: string;
   programmingLanguage: string[];
@@ -36,9 +37,15 @@ export interface GetMentorResponse {
   validProfile?: boolean;
 }
 
+export interface Image {
+  '144x144'?: string;
+  '512x512'?: string;
+}
+
 export interface Mentor {
   _id?: string;
   grade: 'junior' | 'middle' | 'senior';
+  image?: Image;
   language?: string[];
   name: string;
   programmingLanguage: string[];
@@ -65,7 +72,11 @@ export interface PostBookingRequest {
    * @min 0
    * @max 2
    */
-  tariffIndex: number;
+  tariffIndex?: number;
+}
+
+export interface PostImageRequest {
+  base64?: string;
 }
 
 export interface PostMentorRequest {
@@ -90,6 +101,7 @@ export interface PutMentorRequest {
   email: string;
   experienceSince: number;
   grade: 'junior' | 'middle' | 'senior';
+  image?: Image;
   language?: string[];
   name: string;
   programmingLanguage: string[];
@@ -388,6 +400,24 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       this.request<BasicResponse, BasicResponse>({
         path: `/mentor`,
         method: 'DELETE',
+        format: 'json',
+        ...params,
+      }),
+
+    /**
+     * @description Upload your best photo
+     *
+     * @tags mentor
+     * @name ImageCreate
+     * @summary Upload Image
+     * @request POST:/mentor/image
+     */
+    imageCreate: (user: PostImageRequest, params: RequestParams = {}) =>
+      this.request<Image, BasicResponse>({
+        path: `/mentor/image`,
+        method: 'POST',
+        body: user,
+        type: ContentType.Json,
         format: 'json',
         ...params,
       }),

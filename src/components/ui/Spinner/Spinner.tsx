@@ -4,10 +4,15 @@ import { BeatLoader } from 'react-spinners';
 interface Props {
   size: number;
   color: 'accent' | 'white';
+  className?: string;
 }
 
-export const Spinner = ({ size, color }: Props) => {
+export const Spinner = ({ size, color, className }: Props) => {
   return (
-    <BeatLoader size={size} color={color === 'white' ? 'white' : '#81BC55'} />
+    <BeatLoader
+      className={className}
+      size={size}
+      color={color === 'white' ? 'white' : '#81BC55'}
+    />
   );
 };

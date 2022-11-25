@@ -9,15 +9,23 @@ import { FormSubmitProp, Profile } from 'types';
 import ControlledTags from 'components/form-ui/ControlledTags';
 import ControlledPrice from 'pages/EditProfile/components/ControlledPrice/ControlledPrice';
 import EditableProfileImage from 'pages/EditProfile/components/EditableProfileImage/EditableProfileImage';
+import cn from 'classnames';
 
 interface Props {
   loading: boolean;
   onChange: (val: unknown) => void;
   onDelete: (val: unknown) => void;
   defaultValues: Profile;
+  defaultImage?: string;
 }
 
-const ProfileForm = ({ loading, onChange, defaultValues, onDelete }: Props) => {
+const ProfileForm = ({
+  loading,
+  onChange,
+  defaultValues,
+  onDelete,
+  defaultImage,
+}: Props) => {
   const navigation = useNavigation();
   const {
     register,
@@ -33,8 +41,8 @@ const ProfileForm = ({ loading, onChange, defaultValues, onDelete }: Props) => {
 
   return (
     <Form formId="profile">
-      <EditableProfileImage />
-      <div className={styles.fields}>
+      <EditableProfileImage defaultImage={defaultImage} />
+      <div className={cn([styles.fields, styles.editForm])}>
         <div className={styles.row}>
           <Input
             {...register('name', { required: true })}
