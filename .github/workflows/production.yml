@@ -21,6 +21,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm i
+    - run: npm run start
     - run: npx cypress run --record --key 9f6f4815-1d9e-4c61-9023-ce19c9cd545f
     - run: npm run build
     - name: ftp-action
