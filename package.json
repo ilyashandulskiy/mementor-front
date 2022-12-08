@@ -31,6 +31,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build -p",
     "test:dev": "react-scripts test",
+    "test:prod": "npx cypress run --record --key 9f6f4815-1d9e-4c61-9023-ce19c9cd545f",
     "eject": "react-scripts eject",
     "lint": "npx eslint --fix .",
     "sb": "start-storybook -p 6006 -s public",
